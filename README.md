@@ -13,11 +13,9 @@ Our team consists of the most creative minds and brightest developers in the kno
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![HTML][HTML]][Html-url]
-* [![Css][CSS]][Css-url]
-* [![Node][Node.js]][Node-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+|       `html`       |        <img src="./icons/HTML.svg" width="48">        |
+|       `css`        |        <img src="./icons/CSS.svg" width="48">         |
+|      `nodejs`      |    <img src="./icons/NodeJS-Dark.svg" width="48">     |
+|      `mysql`       |     <img src="./icons/MySQL-Dark.svg" width="48">     |
+|        `js`        |     <img src="./icons/JavaScript.svg" width="48">     |
+
