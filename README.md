@@ -9,13 +9,15 @@ Elite Members:
 
 Our team consists of the most creative minds and brightest developers in the known universe. We make no compromises and only tolerate excellence. Only gaming geniuses have a place at Ubisoft Concurrence.
 
+
+## Contact Us... or Don't
+
+If you believe you can match our greatness and want to embark on the journey with Ubisoft Concurrence, feel free to attempt contacting us. Keep in mind, we only have time for those who truly stand out. Show us what you've got, or step aside as we redefine the gaming landscape.
+Welcome to a realm of audacity and ambition, where we rewrite the rules and leave a legacy. Ubisoft Concurrence: where extraordinary is an understatement.
+
+
 ### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-|       `html`       |        <img src="./icons/HTML.svg" width="48">        |
-|       `css`        |        <img src="./icons/CSS.svg" width="48">         |
-|      `nodejs`      |    <img src="./icons/NodeJS-Dark.svg" width="48">     |
-|      `mysql`       |     <img src="./icons/MySQL-Dark.svg" width="48">     |
-|        `js`        |     <img src="./icons/JavaScript.svg" width="48">     |
-
+<p align="left"> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> </p>
