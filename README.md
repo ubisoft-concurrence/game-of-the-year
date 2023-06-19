@@ -1,7 +1,12 @@
 <h1 align="center">BUS FIGHTING SIMULATOR</h1>
 
 <img src="./images/illustrative_picture.png" alt="Illustrative Picture" align="left" style="height: 470px;">
-<p>"In a ravaged post-apocalyptic world, two ruthless gangs fiercely<br>battle for dominance over the territory, aboard heavily armed buses.<br> Resources are scarce, and survival depends on their strength and<br>determination. Welcome to Bus Fighting Simulator."</p>
+<p>
+    "In a devasted world, two ruthless gangs battle for <br>
+     dominance over the territory aboard heavily armed buses. <br>
+     Resources are scarce, and survival depends on their strength <br>
+     and their determination. Welcome to Bus Fighting Simulator."
+</p>
 
 <br>
 
