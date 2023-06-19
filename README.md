@@ -1,20 +1,7 @@
-# Welcome to the astonishing world of Ubisoft Concurrence! We are the undisputed masters of video game development, and we are determined to create the game of the year.
+#BUS FIGHTING SIMULATOR
 
-# About The Project
-
-## Divine Objective:
-
-Our mission is simple: to create the video game that will leave players in awe, competitors envious, and critics speechless. We will revolutionize the industry and show everyone what it means to be number one.
-Elite Members:
-
-Our team consists of the most creative minds and brightest developers in the known universe. We make no compromises and only tolerate excellence. Only gaming geniuses have a place at Ubisoft Concurrence.
-
-
-## Contact Us... or Don't
-
-If you believe you can match our greatness and want to embark on the journey with Ubisoft Concurrence, feel free to attempt contacting us. Keep in mind, we only have time for those who truly stand out. Show us what you've got, or step aside as we redefine the gaming landscape.
-Welcome to a realm of audacity and ambition, where we rewrite the rules and leave a legacy. Ubisoft Concurrence: where extraordinary is an understatement.
-
+<img src="./images/illustrative_picture.png">
+"In a ravaged post-apocalyptic world, two ruthless gangs fiercely battle for dominance over the territory, aboard heavily armed buses. Resources are scarce, and survival depends on their strength and determination. Welcome to "Bus Fighting Simulator".
 
 ### Built With
 
