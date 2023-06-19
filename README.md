@@ -31,7 +31,7 @@
   <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> 
   </a>
 </p>
-and agile scrum methodology
+and the agile scrum methodology
 <br>
 
 <img scr="https://media.istockphoto.com/id/1307986275/fr/vectoriel/pixel-game-over-8-bits-pixel-game-over-vector-background.jpg?s=612x612&w=0&k=20&c=LX2RMrOJzybLlqrq66Wn-_kW3hWF-p5tdDxqEKs-pSA=">
