@@ -12,14 +12,17 @@ html{
     src: url(font/PressStart2P-Regular.ttf);
     font-weight: bold;
 }
-  
-  h1, h2{
-    font-family: PressStart2P;
-  }
-  
+
   h1 {
     font-size: 40px;
     color: #D9D9D9;
+    text-shadow: 1px 1px 2px black;
+    font-family: PressStart2P;
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #ffffff;
     text-shadow: 1px 1px 2px black;
   }
 
