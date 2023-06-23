@@ -3,7 +3,24 @@ import { getCharacters } from './database.js';
 
 const app = express();
 
-app.get("/characters", async (req, res) => {
+//CODE FOR CORS ERRORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
+  });
+
+// app.use('/api/stuff', (req, res, next) => {
+//     res.status(200).json(stuff);
+//     next();
+// });
+
+app.use("/", async (req, res) => {
     const characters = await getCharacters();
-    res.send(characters)
-})
+    res.status(200).json(characters);
+  });
+
+app.listen(5000, () => {
+    console.log('Le serveur est en écoute sur le port 5000');
+  });

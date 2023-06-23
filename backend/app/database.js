@@ -10,6 +10,6 @@ const pool = mysql.createPool({
 
 
 export async function getCharacters() {
-    const result = await pool.query("SELECT * FROM characters")
-    return result[0]
-}
+    const result = await pool.query("SELECT * FROM characters");
+    return result[0];
+  }
