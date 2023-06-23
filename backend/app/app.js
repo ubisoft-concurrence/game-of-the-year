@@ -11,11 +11,6 @@ app.use((req, res, next) => {
     next();
   });
 
-// app.use('/api/stuff', (req, res, next) => {
-//     res.status(200).json(stuff);
-//     next();
-// });
-
 app.use("/", async (req, res) => {
     const characters = await getCharacters();
     res.status(200).json(characters);
