@@ -11,12 +11,6 @@ html {
   src: url(font/PressStart2P-Regular.ttf);
 }
 
-@font-face {
-  font-family: PressStart2P;
-  src: url(font/PressStart2P-Regular.ttf);
-  font-weight: bold;
-}
-
 h1, h2{
   font-family: PressStart2P;
 }
