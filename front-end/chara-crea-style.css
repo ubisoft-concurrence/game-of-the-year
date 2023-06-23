@@ -36,3 +36,14 @@ html{
     width: 100px;
     height: 100px;
   } 
+
+  .center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .espace{
+    margin-right: 200px;
+    margin-left: 200px;
+  }

@@ -9,14 +9,15 @@
 <body>
     <h1 Align="center">Set Things Up</h1>
 
-    <div>
+<div class="center">
+    <div class="espace">
         <h2>Create your character:</h2>
 
         <h3>Name</h3>
         <input type="text" placeholder="Put a name here">
 
         <h3>Jobs</h3>
-        <select name="pets" id="pet-select">
+        <select name="jobs" id="jobs-select">
             <option value="slasher">Slasher</option>
             <option value="wall">Wall</option>
             <option value="killer">Killer</option>
@@ -36,8 +37,42 @@
         <input type="button" placeholder="Create !">
     </div>
 
-    <div>
+    <div class="espace">
+        <h2>Create your vehicle:</h2>
 
+        <h3>Name</h3>
+        <input type="text" placeholder="Put a name here">
+
+        <h3>Buff</h3>
+        <select name="buff" id="buff-select">
+            <option value="Bhealth">Health</option>
+            <option value="Battack">Attack</option>
+            <option value="Bspeed">Speed</option>
+        </select>
+
+        <h3>Debuff</h3>
+        <select name="debuff" id="debuff-select">
+            <option value="Dhealth">Health</option>
+            <option value="Dattack">Attack</option>
+            <option value="Dspeed">Speed</option>
+        </select>
+
+        <h3>Colors</h3>
+        <select name="color" id="color-select">
+            <option value="yellow">Yellow</option>
+            <option value="brown">Brown</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="pink">Pink</option>
+            <option value="green">Green</option>
+        </select>
+        <div class="skin-list">
+
+        </div><br>
+
+        <input type="button" placeholder="Create !">
     </div>
+</div>
+
 </body>
 </html>
