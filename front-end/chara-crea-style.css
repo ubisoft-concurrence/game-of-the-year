@@ -46,10 +46,13 @@ html{
     justify-content: center;
   }
 
+  .bus-list img{
+    width: 534px;
+    height: 220.5px;
+  }
+
   .stats-info{
     background-color: #D9D9D9;
-    width: 100px;
-    height: 100px;
     display: flex;
     text-align: center;
     align-items: center;

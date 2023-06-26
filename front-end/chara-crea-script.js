@@ -29,11 +29,23 @@ function showImage() {
     });
   }
 
-  function update() {
-    var select = document.getElementById('jobs-select');
-    var option = select.options[select.selectedIndex];
-
-    document.getElementById('stats-jobs').value = option.text;
-    document.getElementsByClassName("slasher").innerHTML = "Slasher<br> HP : 50<br> ATK : 15";
-    document.getElementsByClassName("Wall").innerHTML = "Slasher<br> HP : 50<br> ATK : 15";
-}
+  const selectElement = document.getElementById('imageSelectJobs');
+  const messageElement = document.getElementById('stats-jobs');
+  
+  selectElement.addEventListener('change', function() {
+    const selectedValue = this.value;
+  
+    if (selectedValue === '../images/sprites/icon/Slasher1.png|../images/sprites/icon/Slasher2.png') {
+      messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
+    } else if (selectedValue === '../images/sprites/icon/Wall1.png|../images/sprites/icon/Wall2.png') {
+      messageElement.innerHTML = 'Wall<br> HP : 70<br> ATK : 20';
+    } else if (selectedValue === '../images/sprites/icon/Killer1.png|../images/sprites/icon/Killer2.png') {
+      messageElement.innerHTML = 'Killer<br> HP : 40<br> ATK : 25';
+    } else if (selectedValue === '../images/sprites/icon/Monster1.png|../images/sprites/icon/Monster2.png') {
+        messageElement.innerHTML = 'Monster<br> HP : 100<br> ATK : 10';
+    } else if (selectedValue === '../images/sprites/icon/Gunner1.png|../images/sprites/icon/Gunner2.png') {
+        messageElement.innerHTML = 'Gunner<br> HP : 60<br> ATK : 15';
+    } else {
+      messageElement.innerHTML = '';
+    }
+  });
