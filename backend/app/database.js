@@ -43,3 +43,11 @@ export async function getVehicles() {
     const vehicles = await pool.query(`SELECT * FROM vehicles`);
     return vehicles[0];
 }
+
+//Ranking
+export async function getRanking() {
+    const ranking = await pool.query(
+        `SELECT character_name, character_level 
+        FROM characters ORDER BY character_level DESC`
+    );
+}
