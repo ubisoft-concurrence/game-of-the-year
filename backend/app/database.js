@@ -8,7 +8,7 @@ const pool = mysql.createPool({
     database: 'game',
 }).promise()
 
-//Récupèrer la liste des personnages (nom, classe, level)
+//Récupérer la liste des personnages (nom, classe, level)
 export async function getCharacters() {
     const result = await pool.query(
         `SELECT character_name, class_name, character_level 
@@ -16,7 +16,7 @@ export async function getCharacters() {
     return result[0];
   }
 
-//Récupèrer 1 personnage selon son id (URL sensible à la casse)
+//Récupérer 1 personnage selon son id (URL sensible à la casse)
 export async function getCharacter(id) {
     const result = await pool.query(
         `SELECT * FROM characters WHERE character_id = ?`, [id])
@@ -38,16 +38,26 @@ export async function createVehicule(vehicule_name, buff, nerf) {
     VALUES (?, ?, ?)`, [vehicule_name, buff, nerf])
 }
 
-//Récupèrer la liste des vehicules
+//Récupérer la liste des vehicules
 export async function getVehicles() {
     const vehicles = await pool.query(`SELECT * FROM vehicles`);
     return vehicles[0];
 }
 
-//Ranking
+//Récupérer le classement
 export async function getRanking() {
     const ranking = await pool.query(
         `SELECT character_name, character_level 
         FROM characters ORDER BY character_level DESC`
     );
+}
+
+//Récupérer l'historique des batailles
+export async function getHistoric(){
+    const hisotric = await pool.query(
+        `SELECT battles.battle_id, character_name, result 
+         FROM characters 
+         JOIN battles_characters ON (characters.character_id = battles_characters.character_id) 
+         JOIN battles ON (battles.battle_id = battles_characters.battle_id)`
+    )
 }
