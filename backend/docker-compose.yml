@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+    app:
+        image: node:18.16.0
+        # restart: always
+        working_dir: /app
+        volumes:
+        - ./app:/app
+        command: npm start
+        ports:
+        - 5000:5000
+        networks:
+            - game
+        depends_on:
+        - db
+        
+    db:
+        container_name: database
+        image: mysql:8.0.29
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: game
+        ports:
+            - 3306
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - game
+
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin:5.2.0
+        restart: always
+        ports:
+            - 8001:80
+        environment:
+            - PMA_HOST=db
+        networks:
+            - game
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8081:8080
+
+volumes:
+    db-data:
+
+networks:
+    game:
