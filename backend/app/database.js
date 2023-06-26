@@ -8,11 +8,13 @@ const pool = mysql.createPool({
     database: 'game',
 }).promise()
 
-//Récupèrer la liste des personnages
+//Récupèrer la liste des personnages (nom, classe, level)
 export async function getCharacters() {
-    const result = await pool.query("SELECT * FROM characters");
+    const result = await pool.query(
+        `SELECT character_name, class_name, character_level 
+         FROM characters JOIN classes ON classes.class_id = characters.class_id;`)
     return result[0];
-}
+  }
 
 //Récupèrer 1 personnage selon son id (URL sensible à la casse)
 export async function getCharacter(id) {
