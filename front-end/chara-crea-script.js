@@ -6,6 +6,9 @@ function showImage() {
     imgElement.src = selectedValue;
   }
 
+
+
+  
   function showImagesJobs() {
     var selectElement = document.getElementById("imageSelectJobs");
     var selectedValue = selectElement.value;
@@ -25,3 +28,12 @@ function showImage() {
       imgContainer.appendChild(imgElement);
     });
   }
+
+  function update() {
+    var select = document.getElementById('jobs-select');
+    var option = select.options[select.selectedIndex];
+
+    document.getElementById('stats-jobs').value = option.text;
+    document.getElementsByClassName("slasher").innerHTML = "Slasher<br> HP : 50<br> ATK : 15";
+    document.getElementsByClassName("Wall").innerHTML = "Slasher<br> HP : 50<br> ATK : 15";
+}
