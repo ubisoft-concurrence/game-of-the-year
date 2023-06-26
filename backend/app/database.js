@@ -38,3 +38,8 @@ export async function createVehicule(vehicule_name, buff, nerf) {
     VALUES (?, ?, ?)`, [vehicule_name, buff, nerf])
 }
 
+//Récupèrer la liste des vehicules
+export async function getVehicles() {
+    const vehicles = await pool.query(`SELECT * FROM vehicles`);
+    return vehicles[0];
+}
