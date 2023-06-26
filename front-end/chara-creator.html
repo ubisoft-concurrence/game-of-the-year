@@ -14,10 +14,10 @@
         <h2>Create your character:</h2>
 
         <h3>Name</h3>
-        <input type="text" placeholder="Put a name here">
+        <input type="text" placeholder="Put a name here" maxlength="12">
 
         <h3>Jobs</h3>
-        <select name="jobs" id="jobs-select">
+        <select name="jobs" id="jobs-select" onChange="update()">
             <option value="slasher">Slasher</option>
             <option value="wall">Wall</option>
             <option value="killer">Killer</option>
@@ -27,12 +27,12 @@
 
         <h3>Choose a skin</h3>
         <div class="skin-list">
-
+            <button id="chara-skin"></button>
         </div><br>
 
         <h3>Stats</h3>
         <div class="stats-info">
-
+            <p id="stats-jobs"></p>
         </div><br>
         <input type="button" placeholder="Create !">
     </div>
@@ -41,7 +41,7 @@
         <h2>Create your vehicle:</h2>
 
         <h3>Name</h3>
-        <input type="text" placeholder="Put a name here">
+        <input type="text" placeholder="Put a name here" maxlength="30">
 
         <h3>Buff</h3>
         <select name="buff" id="buff-select">
@@ -75,4 +75,7 @@
 </div>
 
 </body>
+
+<script src="chara-crea-script.js"></script> 
+
 </html>
