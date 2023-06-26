@@ -90,10 +90,18 @@ export async function vehicleChoice(characters) {
             `, character.vehicle_name)
         
         let vehicleId = vehicleIdQueryResult[0].map(result => result.vehicle_id);
-        console.log(vehicleId)
         
         await pool.query(`
         UPDATE characters SET vehicle_id = ? WHERE character_name = ?
         `, [vehicleId, character.character_name])
     }
+}
+
+//Nettoyer le choix de vehicule
+export async function clearChoice() {
+    await pool.query(`
+        UPDATE characters 
+        SET vehicle_id = NULL 
+        WHERE vehicle_id IS NOT NULL 
+    `)
 }
