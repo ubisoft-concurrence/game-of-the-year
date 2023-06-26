@@ -28,7 +28,22 @@ html{
 
   .skin-list{
     width: 100px;
-    height: 100px;
+    height: 200px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skin-list img{
+    width: 150px;
+    height: 150px;
+
+  }
+
+  .bus-list{
+    width: 100px;
+    height: 200px;
     display: flex;
     text-align: center;
     align-items: center;
