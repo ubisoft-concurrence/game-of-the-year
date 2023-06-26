@@ -82,3 +82,18 @@ export async function levelUp(winners) {
     }
 }
 
+//Choix du vehicule
+export async function vehicleChoice(characters) {
+    for (let character of characters) {
+        let vehicleIdQueryResult = await pool.query(`
+            SELECT vehicle_id FROM vehicles WHERE vehicle_name = ?
+            `, character.vehicle_name)
+        
+        let vehicleId = vehicleIdQueryResult[0].map(result => result.vehicle_id);
+        console.log(vehicleId)
+        
+        await pool.query(`
+        UPDATE characters SET vehicle_id = ? WHERE character_name = ?
+        `, [vehicleId, character.character_name])
+    }
+}
