@@ -35,7 +35,7 @@ export async function createCharacter(character_name, skin, class_id) {
 }
 
 //Insère 1 vehicule
-export async function createVehicule(vehicule_name, color, buff, nerf) {
+export async function createVehicle(vehicule_name, color, buff, nerf) {
     await pool.query(`
     INSERT INTO vehicles (vehicle_name, color, buff, nerf)
     VALUES (?, ?, ?)
@@ -104,4 +104,22 @@ export async function clearChoice() {
         SET vehicle_id = NULL 
         WHERE vehicle_id IS NOT NULL 
     `)
+}
+
+//Récupérer les paramètres utiles au combat
+//Caracteristique pour le combat
+export async function battleSettings() {
+    const vehicles = await pool.query (`
+        SELECT DISTINCT vehicle_id 
+        FROM characters 
+        WHERE vehicle_id IS NOT NULL
+        `)
+
+    const fighters = await pool.query(`
+        SELECT * FROM characters 
+        WHERE vehicle_id IS NOT NULL 
+        ORDER BY vehicle_id ASC;
+        `)
+        
+    const classSettings = await pool.query(``)
 }
