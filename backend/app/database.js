@@ -108,18 +108,23 @@ export async function clearChoice() {
 
 //Récupérer les paramètres utiles au combat
 //Caracteristique pour le combat
-export async function battleSettings() {
+export async function battleSetting() {
     const vehicles = await pool.query (`
         SELECT DISTINCT vehicle_id 
         FROM characters 
         WHERE vehicle_id IS NOT NULL
         `)
-
+    const effect = await pool.query (`
+        SELECT vehicle_id, buff, nerf
+        WHERE vehicle_id = ?
+        `)
     const fighters = await pool.query(`
-        SELECT * FROM characters 
+        SELECT character_name, skin, health_point, attack, vehicle_id 
+        FROM characters
+        JOIN classes ON classes.class_id = characters.class_id
         WHERE vehicle_id IS NOT NULL 
         ORDER BY vehicle_id ASC;
         `)
-        
+
     const classSettings = await pool.query(``)
 }
