@@ -61,3 +61,14 @@ export async function getHistoric(){
          JOIN battles ON (battles.battle_id = battles_characters.battle_id)`
     )
 }
+
+//Monter de level (winners liste d'objets JS contenant character_name et character_level) )
+export async function levelUp(winners) {
+    for (let character of winners) {
+        await pool.query(
+            `UPDATE characters SET character_level = ? WHERE character_name = ?`,
+            [character.character_level, character.character_name]
+        );
+    }
+}
+
