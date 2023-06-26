@@ -12,11 +12,19 @@ const pool = mysql.createPool({
 export async function getCharacters() {
     const result = await pool.query("SELECT * FROM characters");
     return result[0];
-  }
+}
 
 //Récupèrer 1 personnage selon son id (URL sensible à la casse)
 export async function getCharacter(id) {
     const result = await pool.query(
         `SELECT * FROM characters WHERE character_id = ?`, [id])
     return result[0];
-  }
+}
+
+//Insère 1 personnage
+export async function createCharacter(character_name, skin) {
+    const result = await pool.query(`
+    INSERT INTO characters (character_name, skin)
+    VALUES (?, ?)`, [character_name, skin])
+    return result
+}
