@@ -35,11 +35,11 @@ export async function createCharacter(character_name, skin, class_id) {
 }
 
 //Insère 1 vehicule
-export async function createVehicule(vehicule_name, buff, nerf) {
+export async function createVehicule(vehicule_name, color, buff, nerf) {
     await pool.query(`
-    INSERT INTO vehicles (vehicle_name, buff, nerf)
+    INSERT INTO vehicles (vehicle_name, color, buff, nerf)
     VALUES (?, ?, ?)
-    `, [vehicule_name, buff, nerf])
+    `, [vehicule_name, color, buff, nerf])
 }
 
 //Récupérer la liste des vehicules
