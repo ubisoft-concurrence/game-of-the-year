@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Creator</title>
     <link rel="stylesheet" href="chara-crea-style.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
     <h1 Align="center">Set Things Up</h1>
@@ -17,17 +18,25 @@
         <input type="text" placeholder="Put a name here" maxlength="12">
 
         <h3>Jobs</h3>
-        <select name="jobs" id="jobs-select" onChange="update()">
-            <option value="slasher">Slasher</option>
-            <option value="wall">Wall</option>
-            <option value="killer">Killer</option>
-            <option value="monster">Monster</option>
-            <option value="gunner">Gunner</option>
+        <select name="jobs" class="jobs-select">
+            <option value="">--Please choose a jobs--</option>
+            <option value="Slasher<br> HP : 50<br> ATK : 15">Slasher</option>
+            <option value="Wall<br> HP : 70<br> ATK : 20">Wall</option>
+            <option value="Killer<br> HP : 40<br> ATK : 25">Killer</option>
+            <option value="Monster<br> HP : 100<br> ATK : 10">Monster</option>
+            <option value="Gunner<br> HP : 60<br> ATK : 15">Gunner</option>
         </select>
 
         <h3>Choose a skin</h3>
         <div class="skin-list">
-            <button id="chara-skin"></button>
+            <ul>
+                <li><input type="checkbox" class="checkskin"/>
+                  <label for="checkskin"></label>
+                </li>
+                <li><input type="checkbox" class="checkskin"/>
+                  <label for="checkskin"></label>
+                </li>
+              </ul>
         </div><br>
 
         <h3>Stats</h3>
@@ -59,6 +68,7 @@
 
         <h3>Colors</h3>
         <select name="color" id="color-select">
+            <option value="">--Please choose a color--</option>
             <option value="yellow">Yellow</option>
             <option value="brown">Brown</option>
             <option value="red">Red</option>
@@ -74,8 +84,28 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+    $("select.jobs-select").change(function() {
+        let selectedItem = $(this).children("option:selected").val();
+        document.getElementById("stats-jobs").innerHTML = selectedItem;
+        document.getElementById("stats-jobs").innerHTML = selectedItem;
+      });
+  });
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+   $('.checkskin').click(function() {
+      $('.checkskin').not(this).prop('checked', false);
+   });
+
+});
+</script>
+
+<script src="chara-crea-script.js"></script>
 </body>
-
-<script src="chara-crea-script.js"></script> 
-
 </html>
