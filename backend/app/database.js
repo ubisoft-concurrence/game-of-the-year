@@ -134,24 +134,65 @@ export async function clearChoice() {
 }
 
 //Récupérer les paramètres utiles au combat
-//Caracteristique pour le combat
 export async function battleSetting() {
-    const vehicles = await pool.query (`
+    let vehicle = await pool.query (`
         SELECT DISTINCT vehicle_id 
         FROM characters 
         WHERE vehicle_id IS NOT NULL
-        `);
-    const effect = await pool.query (`
-        SELECT vehicle_id, buff, nerf
-        WHERE vehicle_id = ?
-        `);
-    const fighters = await pool.query(`
-        SELECT character_name, skin, health_point, attack, vehicle_id 
-        FROM characters
-        JOIN classes ON classes.class_id = characters.class_id
-        WHERE vehicle_id IS NOT NULL 
-        ORDER BY vehicle_id ASC;
-        `);
+        `)
+    
+    let vehicleId = vehicle[0].map(
+                        result => result.vehicle_id
+                        )
+    console.log(vehicleId[1])
 
-    const classSettings = await pool.query(``);
+    const gang1 = await pool.query(`
+        SELECT
+            characters.character_name,
+            characters.skin,
+            characters.character_level,
+            classes.health_point,
+            classes.attack,
+            characters.vehicle_id,
+            vehicles.buff,
+            vehicles.nerf
+        FROM 
+            characters
+        JOIN
+            classes
+        ON
+            characters.class_id = classes.class_id
+        JOIN
+            vehicles
+        ON
+            characters.vehicle_id = vehicles.vehicle_id
+        WHERE
+            characters.vehicle_id = ?
+        `, vehicleId[0])
+    console.log(gang1[0])
+
+    const gang2 = await pool.query(`
+        SELECT
+            characters.character_name,
+            characters.skin,
+            characters.character_level,
+            classes.health_point,
+            classes.attack,
+            characters.vehicle_id,
+            vehicles.buff,
+            vehicles.nerf
+        FROM 
+            characters
+        JOIN
+            classes
+        ON
+            characters.class_id = classes.class_id
+        JOIN
+            vehicles
+        ON
+            characters.vehicle_id = vehicles.vehicle_id
+        WHERE
+            characters.vehicle_id = ?
+        `, vehicleId[1])
+    console.log(gang2[0])
 }
