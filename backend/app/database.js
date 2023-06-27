@@ -72,18 +72,18 @@ function configure(fighters) {
 }
 //Collect and configure useful stats for the battle
 export async function battleSettings() {
-    let vehicle = await pool.query(`
-        SELECT DISTINCT vehicle_id 
+    let vehicle = await pool.query (`
+        SELECT DISTINCT characters.vehicle_id, color 
         FROM characters 
-        WHERE vehicle_id IS NOT NULL
-        `)
-
+        JOIN vehicles ON characters.vehicle_id = vehicles.vehicle_id
+        WHERE characters.vehicle_id IS NOT NULL
+        `);
+    
     let vehicleId = vehicle[0].map(
-        result => result.vehicle_id
-    )
-    console.log(vehicleId[1])
+                        result => result.vehicle_id
+                        );
 
-    const gang1 = await pool.query(`
+    let gang1 = await pool.query(`
         SELECT
             characters.character_name,
             characters.skin,
@@ -105,16 +105,15 @@ export async function battleSettings() {
             characters.vehicle_id = vehicles.vehicle_id
         WHERE
             characters.vehicle_id = ?
-        `, vehicleId[0])
-    console.log(gang1[0])
+        `, vehicleId[0]);
 
-    const gang2 = await pool.query(`
+    let gang2 = await pool.query(`
         SELECT
             characters.character_name,
             characters.skin,
-            characters.character_level,
             classes.health_point,
             classes.attack,
+            characters.character_level,
             characters.vehicle_id,
             vehicles.buff,
             vehicles.nerf
@@ -131,10 +130,22 @@ export async function battleSettings() {
         WHERE
             characters.vehicle_id = ?
         `, vehicleId[1]);
-    console.log(gang2[0]);
-
-    configure(gang1[0]);
-    configure(gang2[0]);
+    
+    settings(gang1[0]);
+    settings(gang2[0]);
+    gang1[0] = gang1[0].map(({ character_name, skin, health_point, attack }) => ({
+        character_name,
+        skin,
+        health_point,
+        attack
+      }));
+    gang2[0] = gang2[0].map(({ character_name, skin, health_point, attack }) => ({
+        character_name,
+        skin,
+        health_point,
+        attack
+      }));
+    return(vehicle[0], gang1[0], gang2[0]);
 }
 //Save a battle
 export async function newBattle() {
@@ -208,3 +219,5 @@ export async function getHistoric() {
         ON (battles.battle_id = battles_characters.battle_id)
     `);
 }
+
+battleSettings();
