@@ -65,6 +65,7 @@ html{
     background-color: #D9D9D9;
     width: 300px;
     height: 550px;
+    overflow-y: scroll;
 }
 
 .center{
