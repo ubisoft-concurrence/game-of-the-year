@@ -63,11 +63,46 @@ function showImage() {
 
 
 
+  document.getElementById("CharaCreator").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche la soumission par défaut du formulaire
   
-function test() {
-  fetchData('/characters')
-  .then((data) => {
-    //logique pour la gestion
-    let NameChara = document.querySelector("#NameChara");
+    var form = document.getElementById("CharaCreator");
+    var formData = new FormData(form);
+    console.log(data)
+  
+    fetch("http://localhost:5000/character/create", {
+      method: "POST",
+      body: formData
+    })
+    .then(function(response) {
+      // Gérer la réponse de la route "/characters" ici
+      alert("Character created !")
+    })
+    .catch(function(error) {
+      // Gérer les erreurs ici
+      alert("Some data is missing...")
+    });
   });  
-}
+
+
+  
+  document.getElementById("BusCreator").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche la soumission par défaut du formulaire
+  
+    var form = document.getElementById("BusCreator");
+    var formData = new FormData(form);
+    console.log(data)
+  
+    fetch("http://localhost:5000/vehicle/create", {
+      method: "POST",
+      body: formData
+    })
+    .then(function(response) {
+      // Gérer la réponse de la route "/vehicles" ici
+      alert("Vehicle created !")
+    })
+    .catch(function(error) {
+      // Gérer les erreurs ici
+      alert("Some data is missing...")
+    });
+  });  
