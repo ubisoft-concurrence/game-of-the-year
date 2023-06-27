@@ -7,6 +7,8 @@ import {createCharacter, createVehicle,
 
 const app = express();
 
+app.use(express.json());
+
 //CODE FOR CORS ERRORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

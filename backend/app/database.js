@@ -219,7 +219,7 @@ export async function getHistoric() {
         JOIN battles 
         ON (battles.battle_id = battles_characters.battle_id)
     `);
-    return
+    return historic[0];
 }
 
 battleSettings();
