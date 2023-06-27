@@ -11,14 +11,30 @@ app.use((req, res, next) => {
     next();
   });
 
+// RECUPERER LES PERSONNAGES (NOM, SKIN, LEVEL)
 app.get("/characters", async (req, res) => {
     const characters = await getCharacters();
     res.send(characters);
   });
 
+// ENREGISTRE UN PERSONNAGE DANS LA BDD
+app.post("/character/create", async (req, res) => {
+    const {character_name, skin} = req.body;
+    await createCharacter(character_name, skin);
+    res.status(201).send("Character created !");
+  });
+
+//RECUPERE LES VEHICULES (NOM, COULEUR, BUFF, DEBUFF)
 app.get("/vehicles", async (req, res) => {
   const vehicles = await getVehicles();
   res.send(vehicles);
+});
+
+// ENREGISTRE UN VEHICULE DANS LA BDD
+app.post("/vehicle/create", async (req, res) => {
+  const {vehicle_name, color, buff, health} = req.body
+  await createVehicle(vehicle_name, color, buff, health)
+  res.status(201).send("Vehicle created !")
 });
 
 app.listen(5000, () => {
