@@ -133,8 +133,22 @@ export async function clearChoice() {
     `);
 }
 
+//Modifie les stats selon: level, buff, nerf
+function configure(fighters) {
+    for(let character of fighters) {
+        if (character.buff == "health") {
+            character.health_point += character.health_point*0.2;
+        } else if (character.buff == "attack") {
+            character.attack += character.attack_point*0.2;
+        }
+        
+        character.health_point += character.health_point*0.1*character.character_level;
+        character.attack += character.attack*0.1*character.character_level;
+    }
+}
+
 //Récupérer les paramètres utiles au combat
-export async function battleSettingsgit() {
+export async function battleSettings() {
     let vehicle = await pool.query (`
         SELECT DISTINCT vehicle_id 
         FROM characters 
@@ -193,6 +207,9 @@ export async function battleSettingsgit() {
             characters.vehicle_id = vehicles.vehicle_id
         WHERE
             characters.vehicle_id = ?
-        `, vehicleId[1])
-    console.log(gang2[0])
+        `, vehicleId[1]);
+    console.log(gang2[0]);
+    
+    configure(gang1[0]);
+    configure(gang2[0]);
 }
