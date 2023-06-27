@@ -163,7 +163,7 @@ export async function getCharacterId(name) {
     return rows[0].character_id;
 }
 //Save the results of a batlle
-export async function saveResult(characters) {
+export async function saveResult(fighters) {
     const lastBattleId = await pool.query(`
         SELECT battle_id
         FROM battles
@@ -171,7 +171,7 @@ export async function saveResult(characters) {
         LIMIT 1
         `)
 
-    for (let character of characters) {
+    for (let character of fighters) {
         console.log(character.character_name)
         await pool.query(`
         INSERT INTO battles_characters (battle_id, character_id, result)
@@ -191,7 +191,7 @@ export async function levelUp(winners) {
     }
 }
 //Clean choice of vehicles
-export async function clearChoice() {
+export async function cleanChoice() {
     await pool.query(`
         UPDATE characters 
         SET vehicle_id = NULL 
@@ -206,6 +206,7 @@ export async function getRanking() {
         SELECT character_name, character_level 
         FROM characters ORDER BY character_level DESC
     `);
+    return ranking[0];
 }
 
 //Retrieve battle history
@@ -218,6 +219,7 @@ export async function getHistoric() {
         JOIN battles 
         ON (battles.battle_id = battles_characters.battle_id)
     `);
+    return
 }
 
 battleSettings();

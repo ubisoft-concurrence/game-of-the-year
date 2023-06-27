@@ -1,5 +1,9 @@
 import express from 'express';
-import { getCharacters, getVehicles } from './database.js';
+import {createCharacter, createVehicle,
+        getCharacters, getVehicles,
+        choice, battleSettings,
+        newBattle, saveResult, levelUp,
+        cleanChoice, getRanking, getHistoric } from './database.js';
 
 const app = express();
 
@@ -45,10 +49,29 @@ app.post("/choice", async (req, res) => {
 });
 
 //*--------FOR PAGE 3 (battle)--------*\\
+//Send stats for the battle
 app.get("/battlesettings", async (req, res) => {
   const settings = await battleSettings();
   res.send(settings);
-})
+});
+//Retrieve end of battle information
+app.post("/battlefinish", async (req, res) => {
+  const { fighters, winners } = req.body;
+  await newBattle();
+  await saveResult(fighters);
+  await levelUp(winners);
+  await cleanChoice();
+  res.status(201).send("Results saved !")
+});
+
+//*--------FOR PAGE 4 (historic)--------*\\
+//Retrieve character rankings
+app.get("/historic", async (req, res) => {
+  const ranking = await getRanking();
+  const historic = await getHistoric();
+  res.send([ranking, historic]);
+});
+
 
 app.listen(5000, () => {
     console.log('Le serveur est en écoute sur le port 5000');
