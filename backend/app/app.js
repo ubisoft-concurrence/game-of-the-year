@@ -1,5 +1,5 @@
 import express from 'express';
-import { getCharacters } from './database.js';
+import { getCharacters, getVehicles } from './database.js';
 
 const app = express();
 
@@ -11,10 +11,15 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use("/characters", async (req, res) => {
+app.get("/characters", async (req, res) => {
     const characters = await getCharacters();
-    res.status(200).json(characters);
+    res.send(characters);
   });
+
+app.get("/vehicles", async (req, res) => {
+  const vehicles = await getVehicles();
+  res.send(vehicles);
+});
 
 app.listen(5000, () => {
     console.log('Le serveur est en écoute sur le port 5000');

@@ -134,7 +134,7 @@ export async function clearChoice() {
 }
 
 //Récupérer les paramètres utiles au combat
-export async function battleSetting() {
+export async function battleSettingsgit() {
     let vehicle = await pool.query (`
         SELECT DISTINCT vehicle_id 
         FROM characters 
