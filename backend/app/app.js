@@ -21,9 +21,9 @@ app.post("/character/create", async (req, res) => {
 });
 //Insert a new vehicles
 app.post("/vehicle/create", async (req, res) => {
-  const {vehicle_name, color, buff, health} = req.body
-  await createVehicle(vehicle_name, color, buff, health)
-  res.status(201).send("Vehicle created !")
+  const {vehicle_name, color, buff, health} = req.body;
+  await createVehicle(vehicle_name, color, buff, health);
+  res.status(201).send("Vehicle created !");
 });
 
 //*--------FOR PAGE 2 (config crew)--------*\\
@@ -41,8 +41,14 @@ app.get("/vehicles", async (req, res) => {
 app.post("/choice", async (req, res) => {
   const characters = req.body;
   await choice(characters);
+  res.status(200).send("Choice is updated !");
 });
 
+//*--------FOR PAGE 3 (battle)--------*\\
+app.get("/battlesettings", async (req, res) => {
+  const settings = await battleSettings();
+  res.send(settings);
+})
 
 app.listen(5000, () => {
     console.log('Le serveur est en écoute sur le port 5000');

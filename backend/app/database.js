@@ -131,8 +131,8 @@ export async function battleSettings() {
             characters.vehicle_id = ?
         `, vehicleId[1]);
     
-    settings(gang1[0]);
-    settings(gang2[0]);
+    configure(gang1[0]);
+    configure(gang2[0]);
     gang1[0] = gang1[0].map(({ character_name, skin, health_point, attack }) => ({
         character_name,
         skin,
