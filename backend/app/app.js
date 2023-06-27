@@ -11,31 +11,38 @@ app.use((req, res, next) => {
     next();
   });
 
-// RECUPERER LES PERSONNAGES (NOM, SKIN, LEVEL)
-app.get("/characters", async (req, res) => {
-    const characters = await getCharacters();
-    res.send(characters);
-  });
 
-// ENREGISTRE UN PERSONNAGE DANS LA BDD
+//*--------FOR PAGE 1 (create characters)--------*\\
+//Insert a new character
 app.post("/character/create", async (req, res) => {
-    const {character_name, skin} = req.body;
-    await createCharacter(character_name, skin);
-    res.status(201).send("Character created !");
-  });
-
-//RECUPERE LES VEHICULES (NOM, COULEUR, BUFF, DEBUFF)
-app.get("/vehicles", async (req, res) => {
-  const vehicles = await getVehicles();
-  res.send(vehicles);
+  const {character_name, skin, class_id} = req.body;
+  await createCharacter(character_name, skin, class_id);
+  res.status(201).send("Character created !");
 });
-
-// ENREGISTRE UN VEHICULE DANS LA BDD
+//Insert a new vehicles
 app.post("/vehicle/create", async (req, res) => {
   const {vehicle_name, color, buff, health} = req.body
   await createVehicle(vehicle_name, color, buff, health)
   res.status(201).send("Vehicle created !")
 });
+
+//*--------FOR PAGE 2 (config crew)--------*\\
+//Get the list of characters
+app.get("/characters", async (req, res) => {
+    const characters = await getCharacters();
+    res.send(characters);
+  });
+//Get the list of vehicles
+app.get("/vehicles", async (req, res) => {
+  const vehicles = await getVehicles();
+  res.send(vehicles);
+});
+//Character(s) and vehicle(s) choice
+app.post("/choice", async (req, res) => {
+  const characters = req.body;
+  await choice(characters);
+});
+
 
 app.listen(5000, () => {
     console.log('Le serveur est en écoute sur le port 5000');

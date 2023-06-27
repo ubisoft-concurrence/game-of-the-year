@@ -9,7 +9,7 @@ const pool = mysql.createPool({
 }).promise()
 
 //*--------FOR PAGE 1 (create characters)--------*\\
-//Insert a character
+//Insert a new character
 export async function createCharacter(character_name, skin, class_id) {
     const result = await pool.query(`
         INSERT INTO characters (character_name, skin, class_id)
@@ -41,8 +41,8 @@ export async function getVehicles() {
         `);
     return vehicles[0];
 }
-//Vehicles choice
-export async function vehicleChoice(characters) {
+//Character(s) and vehicle(s) choice
+export async function choice(characters) {
     for (let character of characters) {
         let vehicleIdQueryResult = await pool.query(`
             SELECT vehicle_id FROM vehicles WHERE vehicle_name = ?
@@ -145,7 +145,7 @@ export async function battleSettings() {
         health_point,
         attack
       }));
-    return(vehicle[0], gang1[0], gang2[0]);
+    return[vehicle[0], gang1[0], gang2[0]];
 }
 //Save a battle
 export async function newBattle() {
