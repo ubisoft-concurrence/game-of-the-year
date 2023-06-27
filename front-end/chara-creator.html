@@ -11,85 +11,94 @@
 
 <div class="center">
     <div class="espace">
-        <h2>Create your character:</h2>
+        <form method="post" id="CharaCreator">
+            <h2>Create your character:</h2>
 
-        <h3>Name</h3>
-        <input type="text" placeholder="Put a name here" maxlength="12" required>
+            <h3>Name</h3>
+            <input type="text" placeholder="Put a name here" id="NameChara" maxlength="12" required>
 
-        <h3>Jobs</h3>
-        <select name="jobs" id="imageSelectJobs" onchange="showImagesJobs()" required>
-            <option value="" hidden selected> </option>
-            <option value="../images/sprites/icon/Slasher1.png|../images/sprites/icon/Slasher2.png" class="slasher">Slasher</option>
-            <option value="../images/sprites/icon/Wall1.png|../images/sprites/icon/Wall2.png" class="Wall<br> HP : 70<br> ATK : 20">Wall</option>
-            <option value="../images/sprites/icon/Killer1.png|../images/sprites/icon/Killer2.png" class="Killer<br> HP : 40<br> ATK : 25">Killer</option>
-            <option value="../images/sprites/icon/Monster1.png|../images/sprites/icon/Monster2.png" class="Monster<br> HP : 100<br> ATK : 10">Monster</option>
-            <option value="../images/sprites/icon/Gunner1.png|../images/sprites/icon/Gunner2.png" class="Gunner<br> HP : 60<br> ATK : 15">Gunner</option>
-        </select>
+            <h3>Jobs</h3>
+            <select name="jobs" id="imageSelectJobs" onchange="showImagesJobs()" required>
+                <option value="" hidden selected> </option>
+                <option value="../images/sprites/icon/Slasher1.png|../images/sprites/icon/Slasher2.png" class="slasher">Slasher</option>
+                <option value="../images/sprites/icon/Wall1.png|../images/sprites/icon/Wall2.png" class="Wall<br> HP : 70<br> ATK : 20">Wall</option>
+                <option value="../images/sprites/icon/Killer1.png|../images/sprites/icon/Killer2.png" class="Killer<br> HP : 40<br> ATK : 25">Killer</option>
+                <option value="../images/sprites/icon/Monster1.png|../images/sprites/icon/Monster2.png" class="Monster<br> HP : 100<br> ATK : 10">Monster</option>
+                <option value="../images/sprites/icon/Gunner1.png|../images/sprites/icon/Gunner2.png" class="Gunner<br> HP : 60<br> ATK : 15">Gunner</option>
+            </select>
 
-        <h3>Choose a skin</h3>
-        <div class="skin-list" id="selectedImagesJobs" required>
-            <img src="" alt="">
-            <img src="" alt="">
-        </div><br>
-        <input type="checkbox" name="" id="skin1">
-        <input type="checkbox" name="" id="skin2">
+            <h3>Choose a skin</h3>
+            <div class="skin-list" id="selectedImagesJobs" required>
+                <img src="../images/sprites/icon/VideIcon.png" alt="">
+                <img src="../images/sprites/icon/VideIcon.png" alt="">
+            </div><br>
+            <div id="checkbox" required>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="" class="checkoption" id="skin1">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="" class="checkoption" id="skin2">
+            </div>
 
-        <h3>Stats</h3>
-        <div class="stats-info">
-            <p id="stats-jobs"></p>
-        </div><br>
-        <input type="submit" placeholder="Create !">
+            <h3>Stats</h3>
+            <div class="stats-info">
+                <p id="stats-jobs"></p>
+            </div><br>
+            <input type="submit" placeholder="Create !">
+        </form>
     </div>
+    
 
     <div class="espace">
-        <h2>Create your vehicle:</h2>
+        <form method="post">
+            <h2>Create your vehicle:</h2>
 
-        <h3>Name</h3>
-        <input type="text" placeholder="Put a name here" maxlength="30" required>
+            <h3>Name</h3>
+            <input type="text" placeholder="Put a name here" maxlength="30" required>
 
-        <h3>Buff</h3>
-        <select name="buff" id="buff-select" required>
-            <option value="Bhealth">Health</option>
-            <option value="Battack">Attack</option>
-            <option value="Bspeed">Speed</option>
-        </select>
+            <h3>Buff</h3>
+            <select name="buff" id="buff-select" required>
+                <option value="Bhealth">Health</option>
+                <option value="Battack">Attack</option>
+                <option value="Bspeed">Speed</option>
+            </select>
 
-        <h3>Debuff</h3>
-        <select name="debuff" id="debuff-select" required>
-            <option value="Dhealth">Health</option>
-            <option value="Dattack">Attack</option>
-            <option value="Dspeed">Speed</option>
-        </select>
+            <h3>Debuff</h3>
+            <select name="debuff" id="debuff-select" required>
+                <option value="Dhealth">Health</option>
+                <option value="Dattack">Attack</option>
+                <option value="Dspeed">Speed</option>
+            </select>
 
-        <h3>Colors</h3>
-        <select name="Color" id="imageSelect" onchange="showImage()" required>
-            <option value="" hidden selected> </option>
-            <option value="../images/sprites/bus/Bus1.png">Yellow</option>
-            <option value="../images/sprites/bus/Bus2.png">Brown</option>
-            <option value="../images/sprites/bus/Bus3.png">Red</option>
-            <option value="../images/sprites/bus/Bus4.png">Blue</option>
-            <option value="../images/sprites/bus/Bus5.png">Pink</option>
-            <option value="../images/sprites/bus/Bus6.png">Green</option>
-        </select>
-        <div class="bus-list">
-            <img id="selectedImage" src="" alt="Selected Image">
-        </div><br>
+            <h3>Colors</h3>
+            <select name="Color" id="imageSelect" onchange="showImage()" required>
+                <option value="" hidden selected> </option>
+                <option value="../images/sprites/bus/Bus1.png">Yellow</option>
+                <option value="../images/sprites/bus/Bus2.png">Brown</option>
+                <option value="../images/sprites/bus/Bus3.png">Red</option>
+                <option value="../images/sprites/bus/Bus4.png">Blue</option>
+                <option value="../images/sprites/bus/Bus5.png">Pink</option>
+                <option value="../images/sprites/bus/Bus6.png">Green</option>
+            </select>
+            <div class="bus-list">
+                <img id="selectedImage" src="../images/sprites/bus/VideBus.png" alt="Selected Image">
+            </div><br><br><br>
 
-        <input type="submit" placeholder="Create !">
+            <input type="submit" placeholder="Create !">
+        </form>
     </div>
 </div>
 
 </body>
 <script src="chara-crea-script.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-      $("select.jobs-select").change(function() {
-        let selectedItem = $(this).children("option:selected").val();
-        $(".output").text(selectedItem);
-      });
-    });
+$(document).ready(function(){
 
+   $('.checkoption').click(function() {
+      $('.checkoption').not(this).prop('checked', false);
+   });
+
+});
 </script>
 </html>

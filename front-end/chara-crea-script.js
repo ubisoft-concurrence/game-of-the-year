@@ -26,6 +26,7 @@ function showImage() {
       imgElement.src = path;
       imgElement.alt = "Selected Image";
       imgContainer.appendChild(imgElement);
+      document.getElementById("checkbox").style.display = "flex";
     });
   }
 
@@ -49,3 +50,32 @@ function showImage() {
       messageElement.innerHTML = '';
     }
   });
+
+
+function test() {
+  fetch('/characters')
+  .then(response => response.json())
+  .then(data => {
+      let PtitDej = document.querySelector("#PtitDej");
+      let PrixDej = document.querySelector("#PrixDej");
+      let Entree = document.querySelector("#Entree");
+      let PrixEntree = document.querySelector("#PrixEntree");
+      let Plats = document.querySelector("#Plats");
+      let PrixPlats = document.querySelector("#PrixPlats");
+      let Desserts = document.querySelector("#Desserts");
+      let PrixDesserts = document.querySelector("#PrixDesserts");
+      let PlatsKID = document.querySelector("#PlatsKID");
+      let PrixPlatsKID = document.querySelector("#PrixPlatsKID");
+      let DessertsKID = document.querySelector("#DessertsKID");
+      let PrixDessertsKID = document.querySelector("#PrixDessertsKID");
+      let AvecA = document.querySelector("#AvecA");
+      let PrixAvecA = document.querySelector("#PrixAvecA");
+      let SansA = document.querySelector("#SansA");
+      let PrixSansA = document.querySelector("#PrixSansA");
+      data.forEach((data) => {
+        console.log(data)
+            
+
+        });
+    })
+}
