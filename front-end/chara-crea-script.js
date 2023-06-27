@@ -1,3 +1,13 @@
+async function fetchData(path) {
+  try {
+    const response = await fetch(`http://localhost:5000/${path}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function showImage() {
     var selectElement = document.getElementById("imageSelect");
     var selectedValue = selectElement.value;
@@ -52,30 +62,12 @@ function showImage() {
   });
 
 
-function test() {
-  fetch('/characters')
-  .then(response => response.json())
-  .then(data => {
-      let PtitDej = document.querySelector("#PtitDej");
-      let PrixDej = document.querySelector("#PrixDej");
-      let Entree = document.querySelector("#Entree");
-      let PrixEntree = document.querySelector("#PrixEntree");
-      let Plats = document.querySelector("#Plats");
-      let PrixPlats = document.querySelector("#PrixPlats");
-      let Desserts = document.querySelector("#Desserts");
-      let PrixDesserts = document.querySelector("#PrixDesserts");
-      let PlatsKID = document.querySelector("#PlatsKID");
-      let PrixPlatsKID = document.querySelector("#PrixPlatsKID");
-      let DessertsKID = document.querySelector("#DessertsKID");
-      let PrixDessertsKID = document.querySelector("#PrixDessertsKID");
-      let AvecA = document.querySelector("#AvecA");
-      let PrixAvecA = document.querySelector("#PrixAvecA");
-      let SansA = document.querySelector("#SansA");
-      let PrixSansA = document.querySelector("#PrixSansA");
-      data.forEach((data) => {
-        console.log(data)
-            
 
-        });
-    })
+  
+function test() {
+  fetchData('/characters')
+  .then((data) => {
+    //logique pour la gestion
+    let NameChara = document.querySelector("#NameChara");
+  });  
 }
