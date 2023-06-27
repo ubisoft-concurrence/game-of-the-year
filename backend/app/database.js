@@ -13,16 +13,17 @@ export async function getCharacters() {
     const result = await pool.query(`
         SELECT character_name, class_name, character_level 
         FROM characters JOIN classes ON classes.class_id = characters.class_id
-        `)
+        `);
     return result[0];
   }
 
-//Récupérer 1 personnage selon son id (URL sensible à la casse)
-export async function getCharacter(id) {
-    const result = await pool.query(`
-    SELECT * FROM characters WHERE character_id = ?
-    `, [id])
-    return result[0];
+//Récupère l'id du personnage selon son nom
+export async function getCharacterId(name) {
+    const [rows] = await pool.query(`
+        SELECT character_id FROM characters WHERE character_name = ?
+        `, [name]
+    );
+    return rows[0].character_id;
 }
 
 //Insère 1 personnage
@@ -30,8 +31,8 @@ export async function createCharacter(character_name, skin, class_id) {
     const result = await pool.query(`
     INSERT INTO characters (character_name, skin, class_id)
     VALUES (?, ?)
-    `, [character_name, skin, class_id])
-    return result
+    `, [character_name, skin, class_id]);
+    return result;
 }
 
 //Insère 1 vehicule
@@ -39,14 +40,14 @@ export async function createVehicle(vehicule_name, color, buff, nerf) {
     await pool.query(`
     INSERT INTO vehicles (vehicle_name, color, buff, nerf)
     VALUES (?, ?, ?)
-    `, [vehicule_name, color, buff, nerf])
+    `, [vehicule_name, color, buff, nerf]);
 }
 
 //Récupérer la liste des vehicules
 export async function getVehicles() {
     const vehicles = await pool.query(`
     SELECT * FROM vehicles
-    `)
+    `);
     return vehicles[0];
 }
 
@@ -55,8 +56,10 @@ export async function getRanking() {
     const ranking = await pool.query(`
         SELECT character_name, character_level 
         FROM characters ORDER BY character_level DESC
-    `)
+    `);
 }
+
+//Enregistre une bataille
 
 //Récupérer l'historique des batailles
 export async function getHistoric(){
@@ -67,7 +70,7 @@ export async function getHistoric(){
         ON (characters.character_id = battles_characters.character_id) 
         JOIN battles 
         ON (battles.battle_id = battles_characters.battle_id)
-    `)
+    `);
 }
 
 //Monter de level (winners liste d'objets JS contenant character_name et character_level)
@@ -78,7 +81,7 @@ export async function levelUp(winners) {
             SET character_level = ? 
             WHERE character_name = ?
             `, [character.character_level, character.character_name]
-        )
+        );
     }
 }
 
@@ -87,13 +90,13 @@ export async function vehicleChoice(characters) {
     for (let character of characters) {
         let vehicleIdQueryResult = await pool.query(`
             SELECT vehicle_id FROM vehicles WHERE vehicle_name = ?
-            `, character.vehicle_name)
+            `, character.vehicle_name);
         
         let vehicleId = vehicleIdQueryResult[0].map(result => result.vehicle_id);
         
         await pool.query(`
         UPDATE characters SET vehicle_id = ? WHERE character_name = ?
-        `, [vehicleId, character.character_name])
+        `, [vehicleId, character.character_name]);
     }
 }
 
@@ -103,7 +106,7 @@ export async function clearChoice() {
         UPDATE characters 
         SET vehicle_id = NULL 
         WHERE vehicle_id IS NOT NULL 
-    `)
+    `);
 }
 
 //Récupérer les paramètres utiles au combat
@@ -113,18 +116,18 @@ export async function battleSetting() {
         SELECT DISTINCT vehicle_id 
         FROM characters 
         WHERE vehicle_id IS NOT NULL
-        `)
+        `);
     const effect = await pool.query (`
         SELECT vehicle_id, buff, nerf
         WHERE vehicle_id = ?
-        `)
+        `);
     const fighters = await pool.query(`
         SELECT character_name, skin, health_point, attack, vehicle_id 
         FROM characters
         JOIN classes ON classes.class_id = characters.class_id
         WHERE vehicle_id IS NOT NULL 
         ORDER BY vehicle_id ASC;
-        `)
+        `);
 
-    const classSettings = await pool.query(``)
+    const classSettings = await pool.query(``);
 }
