@@ -221,5 +221,3 @@ export async function getHistoric() {
     `);
     return historic[0];
 }
-
-battleSettings();
