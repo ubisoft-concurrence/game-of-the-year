@@ -67,6 +67,24 @@ export async function newBattle() {
         `)
 }
 
+//Enregistrer le resultat d'une bataille
+export async function saveResult(characters) {
+    const lastBattleId = await pool.query(`
+        SELECT battle_id
+        FROM battles
+        ORDER BY battle_id DESC
+        LIMIT 1
+        `)
+    
+    for(let character of characters) {
+        console.log(character.character_name)
+        await pool.query(`
+        INSERT INTO battles_characters (battle_id, character_id, result)
+        VALUES  (?, ?, ? )
+        `, [lastBattleId, getCharacterId(character.character_name), character.result])
+    }
+}
+
 //Récupérer l'historique des batailles
 export async function getHistoric(){
     const hisotric = await pool.query(`
