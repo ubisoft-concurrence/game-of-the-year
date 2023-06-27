@@ -60,6 +60,12 @@ export async function getRanking() {
 }
 
 //Enregistre une bataille
+export async function newBattle() {
+    await pool.query(`
+        INSERT INTO battles (date)
+        VALUES (CURDATE())
+        `)
+}
 
 //Récupérer l'historique des batailles
 export async function getHistoric(){
