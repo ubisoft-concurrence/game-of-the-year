@@ -11,7 +11,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use("/", async (req, res) => {
+app.use("/characters", async (req, res) => {
     const characters = await getCharacters();
     res.status(200).json(characters);
   });
