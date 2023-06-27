@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Config</title>
+    <link rel="stylesheet" href="battle-config-style.css">
+</head>
+<body>
+    
+<h1 Align="center">Get Ready to Fight</h1>
+
+<div class="center" >
+    <div id="gang1" class="espace">
+        <div class="gang">
+            <h2>Gang1</h2>
+        </div>
+        <div class="buschoice1">
+            <select name="Bus" id="buschoicesave" required>
+                <option value="" hidden selected>Choose a vehicle</option>
+                <option value="bus">Bus</option>
+            </select>
+        </div>
+        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+    </div>
+
+    <div id="playerlist" class="espace">
+        <div class="playerlisthead">
+            <h2>Player List</h2>
+        </div>
+        <div class="list2" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="center divbackground">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="gang2" class="espace">
+        <div class="gang">
+            <h2>Gang2</h2>
+        </div>
+        <div class="buschoice2">
+            <select name="Bus" id="buschoicesave" required>
+                <option value="" hidden selected>Choose a vehicle</option>
+                <option value="bus">Bus</option>
+            </select>
+        </div>
+        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="battle-config-script.js"></script>
+</html>

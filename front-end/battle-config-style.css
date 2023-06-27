@@ -1,0 +1,90 @@
+html{
+    background-color: #D28954;
+}
+
+@font-face {
+    font-family: PressStart2P;
+    src: url(font/PressStart2P-Regular.ttf);
+  }
+
+@font-face {
+    font-family: PressStart2P;
+    src: url(font/PressStart2P-Regular.ttf);
+    font-weight: bold;
+}
+
+  h1 {
+    font-size: 40px;
+    color: #D9D9D9;
+    text-shadow: 1px 1px 2px black;
+    font-family: PressStart2P;
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px black;
+  }
+
+
+
+
+  .gang{
+    background-color: #73685D;
+    width: 350px;
+    height: 50px;
+    text-align: center;
+  }
+
+  .playerlisthead{
+    background-color: #73685D;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+  }
+
+  .buschoice1{
+    background-color: #686495;
+    width: 350px;
+    height: 50px;
+  }
+
+  .buschoice2{
+    background-color: #956464;
+    width: 350px;
+    height: 50px;
+  }
+
+.list{
+    background-color: #D9D9D9;
+    width: 350px;
+    height: 500px;
+}
+
+.list2{
+    background-color: #D9D9D9;
+    width: 300px;
+    height: 550px;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.espace{
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+
+
+
+
+
+.divbackground{
+    background-color: #919191;
+    width: 250px;
+    height: 50px;
+}
