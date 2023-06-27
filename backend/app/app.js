@@ -18,4 +18,4 @@ app.use("/characters", async (req, res) => {
 
 app.listen(5000, () => {
     console.log('Le serveur est en écoute sur le port 5000');
-  });
+  });""
