@@ -91,6 +91,8 @@ const busContainer = document.querySelector('.busContainer')
 //   } else {
 //     console.log("Match nul !");
 //   }
+const busTeamOne = document.querySelector('#busTeamOne');
+const busTeamTwo = document.querySelector('#busTeamTwo');
 fetch("http://localhost:3000/battlesettings")
 .then(res => res.json())
 .then(data => {
@@ -99,9 +101,12 @@ fetch("http://localhost:3000/battlesettings")
     let teamTwo;
 
     if(data[0][0]){
+        console.log(data[0][0]);
+        busTeamOne.src = `/images/sprites/bus/${data[0][0].color}.png`
         teamOne = data[1]
     }
     if(data[0][1]){
+        busTeamTwo.src = `/images/sprites/bus/${data[0][1].color}.png`
         teamTwo = data[2]
     }
 
@@ -178,10 +183,10 @@ allFighters.forEach(elements => {
     console.log(elements);
     increment++;
     const divGrid = document.createElement('div');
+    
     const skin = elements.skin
     const skinFirstLetter = skin.charAt(0).toUpperCase()
 
-    console.log(skinFirstLetter + skin.slice(1));
     divGrid.classList.add('grid', `grid${increment}`)
 
     const divLifebar = document.createElement('div');
