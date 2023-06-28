@@ -9,7 +9,7 @@ services:
         - ./app:/app
         command: npm start
         ports:
-        - 5000:5000
+        - 3000:3000
         networks:
             - game
         depends_on:
