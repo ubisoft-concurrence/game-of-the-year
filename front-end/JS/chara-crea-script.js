@@ -30,9 +30,9 @@ radio2.addEventListener('change', () => {
 });
 
 const messageElement = document.getElementById('stats-jobs');
+messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
 
 classSelect.addEventListener('change', () => {
-
   if (classSelect.value == "slasher") {
     messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
   } else if (classSelect.value == "wall") {
@@ -46,6 +46,15 @@ classSelect.addEventListener('change', () => {
   }
 });
 
+const selectColor= document.getElementById('color-select');
+const imgSelect = document.getElementById('img-select');
+
+selectColor.addEventListener('change', () => {
+  let colorSelected = selectColor.value;
+
+  imgSelect.src = `/images/sprites/bus/${colorSelected}.png`
+
+});
 
 document.getElementById("CharaCreator").addEventListener("submit", function (event) {
   event.preventDefault(); // Empêche la soumission par défaut du formulaire
