@@ -1,108 +1,105 @@
-async function fetchData(path) {
-  try {
-    const response = await fetch(`http://localhost:5000/${path}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
+//For checkboxes skin
+const classSelect = document.getElementById('class-select');
+const radio1 = document.getElementById('radio1');
+const radio2 = document.getElementById('radio2');
+const skin1 = document.getElementById('skin1');
+const skin2 = document.getElementById('skin2');
+
+classSelect.addEventListener('change', () => {
+  let selectedClass = classSelect.value;
+  skin1.src = `/images/sprites/icon/${selectedClass}1.png`;
+  skin1.alt = selectedClass;
+  skin2.src = `/images/sprites/icon/${selectedClass}2.png`;
+  skin2.alt = selectedClass;
+
+  radio1.value = `${selectedClass}1`;
+  radio2.value = `${selectedClass}2`;
+})
+
+radio1.addEventListener('change', () => {
+  if (radio1.checked) {
+    skin1.classList.add('selected');
+    skin2.classList.remove('selected');
   }
-}
+});
 
-function showImage() {
-    var selectElement = document.getElementById("imageSelect");
-    var selectedValue = selectElement.value;
-    var imgElement = document.getElementById("selectedImage");
-    
-    imgElement.src = selectedValue;
+radio2.addEventListener('change', () => {
+  if (radio2.checked) {
+    skin2.classList.add('selected');
+    skin1.classList.remove('selected');
   }
+});
 
+//For stats
+const messageElement = document.getElementById('stats-jobs');
+messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
 
-
-  
-  function showImagesJobs() {
-    var selectElement = document.getElementById("imageSelectJobs");
-    var selectedValue = selectElement.value;
-    var imgContainer = document.getElementById("selectedImagesJobs");
-    
-    // Clear the container
-    imgContainer.innerHTML = "";
-    
-    // Split the selected value by the delimiter "|"
-    var imagePaths = selectedValue.split("|");
-    
-    // Display each image in the container
-    imagePaths.forEach(function(path) {
-      var imgElement = document.createElement("img");
-      imgElement.src = path;
-      imgElement.alt = "Selected Image";
-      imgContainer.appendChild(imgElement);
-      document.getElementById("checkbox").style.display = "flex";
-    });
+classSelect.addEventListener('change', () => {
+  if (classSelect.value == "slasher") {
+    messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
+  } else if (classSelect.value == "wall") {
+    messageElement.innerHTML = 'Wall<br> HP : 70<br> ATK : 20';
+  } else if (classSelect.value == "killer") {
+    messageElement.innerHTML = 'Killer<br> HP : 40<br> ATK : 25';
+  } else if (classSelect.value == "monster") {
+    messageElement.innerHTML = 'Monster<br> HP : 100<br> ATK : 10';
+  } else if (classSelect.value == "gunner") {
+    messageElement.innerHTML = 'Gunner<br> HP : 60<br> ATK : 15';
   }
+});
 
-  const selectElement = document.getElementById('imageSelectJobs');
-  const messageElement = document.getElementById('stats-jobs');
+// For bus color
+const selectColor= document.getElementById('color-select');
+const imgSelect = document.getElementById('img-select');
+
+selectColor.addEventListener('change', () => {
+  let colorSelected = selectColor.value;
+
+  imgSelect.src = `/images/sprites/bus/${colorSelected}.png`
+
+});
+
+
+//Fetch character
+const formCharacter = document.getElementById('CharaCreator');
+
+formCharacter.addEventListener("submit", function (event) {
+  event.preventDefault(); 
   
-  selectElement.addEventListener('change', function() {
-    const selectedValue = this.value;
+  let classId = document.getElementById("class-select").value
+  if (classId == "slasher") {
+    classId = 1;
+  } else if (classId == "wall") {
+    classId = 2;
+  } else if (classId =="killer") {
+    classId = 3;
+  } else if (classId == "monster") {
+    classId = 4;
+  } else if (classId == "gunner") {
+    classId = 5;
+  }
   
-    if (selectedValue === '../images/sprites/icon/Slasher1.png|../images/sprites/icon/Slasher2.png') {
-      messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
-    } else if (selectedValue === '../images/sprites/icon/Wall1.png|../images/sprites/icon/Wall2.png') {
-      messageElement.innerHTML = 'Wall<br> HP : 70<br> ATK : 20';
-    } else if (selectedValue === '../images/sprites/icon/Killer1.png|../images/sprites/icon/Killer2.png') {
-      messageElement.innerHTML = 'Killer<br> HP : 40<br> ATK : 25';
-    } else if (selectedValue === '../images/sprites/icon/Monster1.png|../images/sprites/icon/Monster2.png') {
-        messageElement.innerHTML = 'Monster<br> HP : 100<br> ATK : 10';
-    } else if (selectedValue === '../images/sprites/icon/Gunner1.png|../images/sprites/icon/Gunner2.png') {
-        messageElement.innerHTML = 'Gunner<br> HP : 60<br> ATK : 15';
-    } else {
-      messageElement.innerHTML = '';
-    }
+  const dataCharacter = {
+    character_name: document.getElementById("chara-name").value,
+    skin: document.querySelector('input[name="skin"]:checked').value,
+    class_id: classId
+  };
+  console.log(dataCharacter);
+  
+  fetch("http://localhost:5000/character/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataCharacter)
+    })
+    .then(function(response) {
+      if (response.ok) {
+        alert("Character created!");
+      }
+    })
+    .catch(function(error) {
+      // Gérer les erreurs ici
+      alert("Some data is missing...");
   });
+});
 
 
-
-  document.getElementById("CharaCreator").addEventListener("submit", function(event) {
-    event.preventDefault(); // Empêche la soumission par défaut du formulaire
-  
-    var form = document.getElementById("CharaCreator");
-    var formData = new FormData(form);
-    console.log(data)
-  
-    fetch("http://localhost:5000/character/create", {
-      method: "POST",
-      body: formData
-    })
-    .then(function(response) {
-      // Gérer la réponse de la route "/characters" ici
-      alert("Character created !")
-    })
-    .catch(function(error) {
-      // Gérer les erreurs ici
-      alert("Some data is missing...")
-    });
-  });  
-
-
-  
-  document.getElementById("BusCreator").addEventListener("submit", function(event) {
-    event.preventDefault(); // Empêche la soumission par défaut du formulaire
-  
-    var form = document.getElementById("BusCreator");
-    var formData = new FormData(form);
-    console.log(data)
-  
-    fetch("http://localhost:5000/vehicle/create", {
-      method: "POST",
-      body: formData
-    })
-    .then(function(response) {
-      // Gérer la réponse de la route "/vehicles" ici
-      alert("Vehicle created !")
-    })
-    .catch(function(error) {
-      // Gérer les erreurs ici
-      alert("Some data is missing...")
-    });
-  });  
