@@ -13,7 +13,7 @@ const pool = mysql.createPool({
 export async function createCharacter(character_name, skin, class_id) {
     const result = await pool.query(`
         INSERT INTO characters (character_name, skin, class_id)
-        VALUES (?, ?)
+        VALUES (?, ?, ?)
         `, [character_name, skin, class_id]);
     return result;
 }

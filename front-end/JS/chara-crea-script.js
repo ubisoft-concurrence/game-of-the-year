@@ -1,3 +1,4 @@
+//For checkboxes skin
 const classSelect = document.getElementById('class-select');
 const radio1 = document.getElementById('radio1');
 const radio2 = document.getElementById('radio2');
@@ -29,6 +30,7 @@ radio2.addEventListener('change', () => {
   }
 });
 
+//For stats
 const messageElement = document.getElementById('stats-jobs');
 messageElement.innerHTML = 'Slasher<br> HP : 50<br> ATK : 15';
 
@@ -46,6 +48,7 @@ classSelect.addEventListener('change', () => {
   }
 });
 
+// For bus color
 const selectColor= document.getElementById('color-select');
 const imgSelect = document.getElementById('img-select');
 
@@ -56,46 +59,69 @@ selectColor.addEventListener('change', () => {
 
 });
 
-document.getElementById("CharaCreator").addEventListener("submit", function (event) {
-  event.preventDefault(); // Empêche la soumission par défaut du formulaire
 
-  var form = document.getElementById("CharaCreator");
-  var formData = new FormData(form);
-  console.log(data)
+//Fetch character
+const formCharacter = document.getElementById('CharaCreator');
 
+formCharacter.addEventListener("submit", function (event) {
+  event.preventDefault(); 
+  
+  let classId = document.getElementById("class-select").value
+  if (classId == "slasher") {
+    classId = 1;
+  } else if (classId == "wall") {
+    classId = 2;
+  } else if (classId =="killer") {
+    classId = 3;
+  } else if (classId == "monster") {
+    classId = 4;
+  } else if (classId == "gunner") {
+    classId = 5;
+  }
+  
+  const dataCharacter = {
+    character_name: document.getElementById("chara-name").value,
+    skin: document.querySelector('input[name="skin"]:checked').value,
+    class_id: classId
+  };
+  console.log(dataCharacter);
+  
   fetch("http://localhost:5000/character/create", {
-    method: "POST",
-    body: formData
-  })
-    .then(function (response) {
-      // Gérer la réponse de la route "/characters" ici
-      alert("Character created !")
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataCharacter)
     })
-    .catch(function (error) {
+    .then(function(response) {
+      if (response.ok) {
+        alert("Character created!");
+      } else {
+        throw new Error("Request failed with status " + response.status);
+      }
+    })
+    .catch(function(error) {
       // Gérer les erreurs ici
-      alert("Some data is missing...")
-    });
+      alert("Some data is missing...");
+  });
 });
 
 
+// document.getElementById("BusCreator").addEventListener("submit", function (event) {
+//   event.preventDefault(); // Empêche la soumission par défaut du formulaire
 
-document.getElementById("BusCreator").addEventListener("submit", function (event) {
-  event.preventDefault(); // Empêche la soumission par défaut du formulaire
+//   var form = document.getElementById("BusCreator");
+//   var formData = new FormData(form);
+//   console.log(data)
 
-  var form = document.getElementById("BusCreator");
-  var formData = new FormData(form);
-  console.log(data)
-
-  fetch("http://localhost:5000/vehicle/create", {
-    method: "POST",
-    body: formData
-  })
-    .then(function (response) {
-      // Gérer la réponse de la route "/vehicles" ici
-      alert("Vehicle created !")
-    })
-    .catch(function (error) {
-      // Gérer les erreurs ici
-      alert("Some data is missing...")
-    });
-});  
+//   fetch("http://localhost:5000/vehicle/create", {
+//     method: "POST",
+//     body: formData
+//   })
+//     .then(function (response) {
+//       // Gérer la réponse de la route "/vehicles" ici
+//       alert("Vehicle created !")
+//     })
+//     .catch(function (error) {
+//       // Gérer les erreurs ici
+//       alert("Some data is missing...")
+//     });
+// });  
