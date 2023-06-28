@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Config</title>
-    <link rel="stylesheet" href="battle-config-style.css">
+    <link rel="stylesheet" href="../CSS/battle-config-style.css">
 </head>
 <body>
     
@@ -21,52 +21,53 @@
                 <option value="bus">Bus</option>
             </select>
         </div>
-        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <section class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-        </div>
+        </section>
     </div>
 
     <div id="playerlist" class="espace">
         <div class="playerlisthead">
             <h2>Player List</h2>
         </div>
-        <div class="list2" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="divbackground center" draggable="true" ondragstart="drag(event)" id="drag1">
-                <p>Jean-Louis</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Slasher</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <section class="list2" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag1">
+                <p class="espaceP">Jean-Louis</p>
+                <p class="espaceP">Slasher</p>
+                <p class="espaceP">LV</p>
+            </div>
+
+            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag2">
+                <p>Josianne</p>
+                <p>Wall</p>
                 <p>LV</p>
             </div>
 
-            <div class="divbackground center" draggable="true" ondragstart="drag(event)" id="drag2">
-                <p>Josianne</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Wall</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag3">
+                <p>Phillipe</p>
+                <p>Killer</p>
                 <p>LV</p>
             </div>
 
-            <div class="divbackground center" draggable="true" ondragstart="drag(event)" id="drag3">
-                <p>Phillipe</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Killer</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag4">
+                <p>Dider</p>
+                <p>Monster</p>
                 <p>LV</p>
             </div>
 
-            <div class="divbackground center" draggable="true" ondragstart="drag(event)" id="drag4">
-                <p>Dider</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Monster</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag5">
+                <p>Germaine</p>
+                <p>Gunner</p>
                 <p>LV</p>
             </div>
 
-            <div class="divbackground center" draggable="true" ondragstart="drag(event)" id="drag5">
-                <p>Germaine</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Gunner</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag6">
+                <p>Corentin</p>
+                <p>Albreak</p>
                 <p>LV</p>
             </div>
 
-            <div class="divbackground center" draggable="true" ondragstart="drag(event)" id="drag6">
-                <p>Eric</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Eric</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>LV</p>
-            </div>
-        </div>
+        </section>
     </div>
 
     <div id="gang2" class="espace">
@@ -79,12 +80,17 @@
                 <option value="bus">Bus</option>
             </select>
         </div>
-        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <section class="list"ondrop="drop(event)" ondragover="allowDrop(event)">
 
-        </div>
+        </section>
     </div>
 </div>
 
+<div class="center">
+    <button onclick="window.location.href='../HTML/chara-creator.html';">Character Creator</button>
+    <button onclick="window.location.href='bagarre';">Start the Battle</button>
+</div>
+
 </body>
-<script src="battle-config-script.js"></script>
+<script src="../JS/battle-config-script.js"></script>
 </html>

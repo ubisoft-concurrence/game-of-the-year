@@ -4,12 +4,12 @@ html{
 
 @font-face {
     font-family: PressStart2P;
-    src: url(font/PressStart2P-Regular.ttf);
+    src: url(../font/PressStart2P-Regular.ttf);
   }
 
 @font-face {
     font-family: PressStart2P;
-    src: url(font/PressStart2P-Regular.ttf);
+    src: url(../font/PressStart2P-Regular.ttf);
     font-weight: bold;
 }
 

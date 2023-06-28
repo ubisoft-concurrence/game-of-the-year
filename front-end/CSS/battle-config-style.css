@@ -4,12 +4,12 @@ html{
 
 @font-face {
     font-family: PressStart2P;
-    src: url(font/PressStart2P-Regular.ttf);
+    src: url(../font/PressStart2P-Regular.ttf);
   }
 
 @font-face {
     font-family: PressStart2P;
-    src: url(font/PressStart2P-Regular.ttf);
+    src: url(../font/PressStart2P-Regular.ttf);
     font-weight: bold;
 }
 
@@ -88,4 +88,15 @@ html{
     background-color: #919191;
     width: 250px;
     height: 50px;
+}
+
+.textDiv{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.espaceP{
+  margin-bottom: 20px;
 }
