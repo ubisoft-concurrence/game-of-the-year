@@ -94,8 +94,6 @@ formCharacter.addEventListener("submit", function (event) {
     .then(function(response) {
       if (response.ok) {
         alert("Character created!");
-      } else {
-        throw new Error("Request failed with status " + response.status);
       }
     })
     .catch(function(error) {
@@ -105,23 +103,3 @@ formCharacter.addEventListener("submit", function (event) {
 });
 
 
-// document.getElementById("BusCreator").addEventListener("submit", function (event) {
-//   event.preventDefault(); // Empêche la soumission par défaut du formulaire
-
-//   var form = document.getElementById("BusCreator");
-//   var formData = new FormData(form);
-//   console.log(data)
-
-//   fetch("http://localhost:5000/vehicle/create", {
-//     method: "POST",
-//     body: formData
-//   })
-//     .then(function (response) {
-//       // Gérer la réponse de la route "/vehicles" ici
-//       alert("Vehicle created !")
-//     })
-//     .catch(function (error) {
-//       // Gérer les erreurs ici
-//       alert("Some data is missing...")
-//     });
-// });  
