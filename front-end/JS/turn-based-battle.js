@@ -234,8 +234,7 @@ function attack(attaquant, defenseur, random1, random2) {
 
 
     for (let i = 0; i < pointVie.length && i < allFighters.length && i < img.length && i < greenBar.length; i++) {
-        pointVie[i].innerHTML = allFighters[i].health_point;
-
+        pointVie[i].innerHTML = Math.floor(allFighters[i].health_point);
         greenBar[i].style.width =  allFighters[i].health_point * 1 + '%';
 
 
