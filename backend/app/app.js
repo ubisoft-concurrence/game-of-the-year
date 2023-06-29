@@ -1,4 +1,8 @@
 import express from 'express';
+import path from 'path';
+
+const __dirname = path.resolve();
+
 import {createCharacter, createVehicle,
         getCharacters, getVehicles,
         choice, battleSettings,
@@ -17,7 +21,14 @@ app.use((req, res, next) => {
     next();
   });
 
+app.use(express.static(path.join(__dirname, '../../front-end/HTML')));
 
+  // Middlewares de lecture placés ici
+  
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../front-end/HTML/index.html'));
+  });
+  
 //*--------FOR PAGE 1 (create characters)--------*\\
 //Insert a new character
 app.post("/character/create", async (req, res) => {
