@@ -12,8 +12,8 @@ function drop(event) {
     event.preventDefault();
     let player = event.dataTransfer.getData("text")
     let playerDiv = event.target
-    let characterName = playerDiv.querySelector("p")
-  
+    let pElement = playerDiv.querySelector("p")
+    let pseudo
     if (event.target.id === "gang1") {
       gang1.push(characterName); 
     } else if (event.target.id === "gang2") {
@@ -27,8 +27,8 @@ function drop(event) {
 
   }
 
-  function getPlayerPseudo(playerDiv) {
-    let playerName = playerDiv.getElementByTagName("p")[0].textContent
+  function getPlayerPseudo() {
+    let pseudo = playerDiv.getElementByTagName("p")[0].textContent
     console.log(playerName);
     return playerName
   }
