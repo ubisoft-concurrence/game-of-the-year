@@ -7,9 +7,9 @@ const skin2 = document.getElementById('skin2');
 
 classSelect.addEventListener('change', () => {
   let selectedClass = classSelect.value;
-  skin1.src = `/images/sprites/icon/${selectedClass}1.png`;
+  skin1.src = `../../images/sprites/icon/${selectedClass}1.png`;
   skin1.alt = selectedClass;
-  skin2.src = `/images/sprites/icon/${selectedClass}2.png`;
+  skin2.src = `../../images/sprites/icon/${selectedClass}2.png`;
   skin2.alt = selectedClass;
 
   radio1.value = `${selectedClass}1`;
@@ -55,7 +55,7 @@ const imgSelect = document.getElementById('img-select');
 selectColor.addEventListener('change', () => {
   let colorSelected = selectColor.value;
 
-  imgSelect.src = `/images/sprites/bus/${colorSelected}.png`
+  imgSelect.src = `../../images/sprites/bus/${colorSelected}.png`
 
 });
 
