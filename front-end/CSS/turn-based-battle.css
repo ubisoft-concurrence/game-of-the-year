@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+}
+
+@keyframes moove {
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(-5px);
+    }
+}
+.picture{
+    width: 200vw;
+    height: 100vh;
+    display: flex;
+}
+.img{
+    animation: slide 5s linear infinite;
+    width: 100%;
+}
+
+.fond{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.fond2{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+/* .img2{
+    background-image: url(wsh.png);
+    width: 100%;
+    height: 20%;
+    background-size: cover;
+} */
+.get-sol{
+    min-width: 200vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
+
+@keyframes slide {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.grid{
+    width: 124px;
+    height: 124px;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* position: relative; */
+    /* position: absolute; */
+    /* top: 53%;
+    padding: 5px; */
+    animation: moove .2s linear infinite alternate;
+}
+.placeFight{
+    width: 100vw;
+    height: 50%;
+    position: relative;
+}
+#getFighters{
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    top: -50px;
+}
+.grid1{
+    left: 14%;
+}
+.grid2{
+    left: 20%;
+}
+.grid3{
+    left: 8%;
+}
+.grid4{
+    left: 26%;
+}
+.grid5{
+    right: 35%;
+    margin-right: 30px;
+}
+.grid6{
+    right: 25%;
+}
+.grid7{
+    right: 15%;
+}
+.grid8{
+    right: 5%;
+}
+.grid9 .imgCharacter,
+.grid6 .imgCharacter,
+.grid7 .imgCharacter,
+.grid10 .imgCharacter,
+.grid8 .imgCharacter {
+    transform: scaleX(-1);
+}
+
+.lifebar{
+    width: 100px;
+    height: 15px;
+    margin: 0 auto;
+    background-color: rgb(128, 0, 0);
+    position: relative;
+}
+.lifebar p{
+    font-size: 13px;
+    color: white;
+    z-index: 10000;
+}
+.greenbar{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+.grid .imgCharacter{
+    background-image: url(/images/sprites/battle/Wall2.png);
+    background-size: cover;
+    width: 90px;
+    height: 144px;
+}
+
+/* .imgBus{
+    position: absolute;
+    top: 55%;
+    left: 2%;
+}
+.imgBus:nth-of-type(2){
+    left: 50%;
+} */
+.busContainer{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 380px;
+}
+.myBus{
+    display: flex;
+}
+.imgBus img{
+    position: relative;
+    width: 680px;
+    animation: moove .2s linear infinite alternate;
+}
+
+.infoFight{
+    width: 80%;
+    height: 100px;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 0;
+    left: 10%;
+    display: flex;
+    font-family: 'Press Start 2P', cursive;
+}
+.idRound{
+    border-right: 1px solid black;
+    margin: 0 5px;
+    font-size: 25px;
+}
+.infosRound{
+    font-size: 25px;
+}
+.nameFighter{
+    margin: 5px auto;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    text-transform: capitalize;
+}
