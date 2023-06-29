@@ -5,7 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --delay 10000 app.js",
+    "start": "node app.js",
     "docker-start": "docker-compose up -d --build",
     "docker-stop": "docker-compose down",
     "test": "echo \"Error: no test specified\" && exit 1"
