@@ -3,25 +3,14 @@ html{
 }
 
 @font-face {
-<<<<<<< HEAD
-  font-family: PressStart2P;
-  src: url(font/PressStart2P-Regular.ttf);
-}
-
-@font-face {
-  font-family: PressStart2P;
-  src: url(font/PressStart2P-Regular.ttf);
-  font-weight: bold;
-=======
     font-family: PressStart2P;
-    src: url(font/PressStart2P-Regular.ttf);
+    src: url(../font/PressStart2P-Regular.ttf);
   }
 
 @font-face {
     font-family: PressStart2P;
-    src: url(font/PressStart2P-Regular.ttf);
+    src: url(../font/PressStart2P-Regular.ttf);
     font-weight: bold;
->>>>>>> 9904aaf5f247a08983733479ef99b423c0435918
 }
 
 h1 {
