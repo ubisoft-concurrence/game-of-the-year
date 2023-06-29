@@ -103,3 +103,44 @@ formCharacter.addEventListener("submit", function (event) {
 });
 
 
+//Fetch vehicles
+const formVehicle = document.getElementById('CharaCreator');
+
+formCharacter.addEventListener("submit", function (event) {
+  event.preventDefault(); 
+  
+  let classId = document.getElementById("class-select").value
+  if (classId == "slasher") {
+    classId = 1;
+  } else if (classId == "wall") {
+    classId = 2;
+  } else if (classId =="killer") {
+    classId = 3;
+  } else if (classId == "monster") {
+    classId = 4;
+  } else if (classId == "gunner") {
+    classId = 5;
+  }
+  
+  const dataCharacter = {
+    character_name: document.getElementById("chara-name").value,
+    skin: document.querySelector('input[name="skin"]:checked').value,
+    class_id: classId
+  };
+  console.log(dataCharacter);
+  
+  fetch("http://localhost:5000/character/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataCharacter)
+    })
+    .then(function(response) {
+      if (response.ok) {
+        alert("Character created!");
+      }
+    })
+    .catch(function(error) {
+      // Gérer les erreurs ici
+      alert("Some data is missing...");
+  });
+});
