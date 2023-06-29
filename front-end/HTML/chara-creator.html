@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Creator</title>
-    <link rel="stylesheet" href="/front-end/CSS/chara-crea-style.css">
+    <link rel="stylesheet" href="../CSS/chara-crea-style.css">
 </head>
 <body>
     <h1 Align="center">Set Things Up</h1>
@@ -29,12 +29,12 @@
             <h3>Choose a skin</h3>
             <div id="checkbox-div">
                 <label for="radio1">
-                    <img id="skin1" src="/images/sprites/icon/slasher1.png" alt="image slasher1">
+                    <img id="skin1" src="../../images/sprites/icon/slasher1.png" alt="image slasher1">
                 </label>
                 <input type="radio" id="radio1" name="skin" value="slasher1" style="display: none;" required>
                 
                 <label for="radio2">
-                    <img id="skin2" src="/images/sprites/icon/slasher2.png" alt="image slasher2">
+                    <img id="skin2" src="../../images/sprites/icon/slasher2.png" alt="image slasher2">
                 </label>
                 <input type="radio" id="radio2" name="skin" value="slasher2" style="display: none;" required>
             </div>
@@ -78,7 +78,7 @@
                 <option value="green">Green</option>
             </select>
             <div class="bus-list">
-                <img id="img-select" src="/images/sprites/bus/yellow.png" alt="bus1">
+                <img id="img-select" src="../../images/sprites/bus/yellow.png" alt="bus1">
             </div><br><br><br>
 
             <input type="submit" placeholder="Create !">
@@ -90,19 +90,9 @@
     <h2>When you finish your config :</h2>
 </div>
 <div class="center">
-    <button onclick="window.location.href='/front-end/HTML/battle-config.html';">Assemble your Crew</button>
+    <button onclick="window.location.href='./battle-config.html';">Assemble your Crew</button>
 </div>
 
 </body>
-<script src="/front-end/JS/chara-crea-script.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-
-   $('.checkoption').click(function() {
-      $('.checkoption').not(this).prop('checked', false);
-   });
-
-});
-</script>
+<script src="../JS/chara-crea-script.js"></script>
 </html>
