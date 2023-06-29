@@ -141,14 +141,6 @@ body{
     height: 144px;
 }
 
-/* .imgBus{
-    position: absolute;
-    top: 55%;
-    left: 2%;
-}
-.imgBus:nth-of-type(2){
-    left: 50%;
-} */
 .busContainer{
     display: flex;
     position: absolute;
