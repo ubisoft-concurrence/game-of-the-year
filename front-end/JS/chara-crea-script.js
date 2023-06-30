@@ -111,9 +111,7 @@ formVehicle.addEventListener("submit", function (event) {
   
   const dataVehicle = {
     vehicle_name: document.getElementById("vehicle-name").value,
-
     color: document.getElementById('color-select').value,
-
     buff: document.getElementById('buff-select').value,
     nerf: document.getElementById('debuff-select').value,
   };

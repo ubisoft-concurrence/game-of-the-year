@@ -21,7 +21,7 @@ export async function createCharacter(character_name, skin, class_id) {
 export async function createVehicle(vehicule_name, color, buff, nerf) {
     await pool.query(`
         INSERT INTO vehicles (vehicle_name, color, buff, nerf)
-        VALUES (?, ?, ?)
+        VALUES (?, ?, ?, ?)
         `, [vehicule_name, color, buff, nerf]);
 }
 
