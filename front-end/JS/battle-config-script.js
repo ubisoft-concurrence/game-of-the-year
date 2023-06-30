@@ -1,51 +1,44 @@
+//FETCH FOR CHARACTERS
 const output = document.getElementById('ListPlayer');
 fetch('http://localhost:3000/characters')
   .then(response => response.json())
   .then(characters => {
-    console.log(characters)
     let i = 0
     characters.forEach(element => {
       i++;
-      console.log(element)
       output.innerHTML += `<div class='player divbackground textDiv' draggable='true' ondragstart='drag(event)' id='drag${i}'>`
         + `<p class="pseudo">` + element.character_name + `</p><p>` + element.class_name + `</p><p> LV:` + element.character_level + `</p>` + `</div>`;
     });
   })
-
+//FETCH FOR VEHICLES
 const output2 = document.getElementById('buschoicesave');
 const output3 = document.getElementById('buschoicesave2');
 fetch('http://localhost:3000/vehicles')
   .then(response => response.json())
   .then(vehicles => {
-    console.log(vehicles)
     let x = 0
     vehicles.forEach(element => {
       x++;
-      console.log(element)
       output2.innerHTML += `<option value="bus${x}">` + element.vehicle_name + `</div>`;
       output3.innerHTML += `<option value="bus${x}">` + element.vehicle_name + `</div>`;
     });
   })
 
-
-const divGang1 = document.getElementById("Gang1");
-const divGang2 = document.getElementById("Gang2");
-
+//DRAG AND DROP
 function allowDrop(ev) {
   ev.preventDefault();
 }
-
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
-
 function drop(even) {   
   even.preventDefault();
   var fetchData = even.dataTransfer.getData("text");
   even.currentTarget.appendChild(document.getElementById(fetchData));
 }
 
-
+const divGang1 = document.getElementById("Gang1");
+const divGang2 = document.getElementById("Gang2");
 const busGang1Select = document.getElementById("buschoicesave");
 const busGang2Select = document.getElementById("buschoicesave2");
 const startBtn = document.getElementById("btn-start");
