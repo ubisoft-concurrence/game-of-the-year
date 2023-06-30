@@ -101,82 +101,21 @@ fetch("http://localhost:3000/battlesettings")
         let teamOne;
         let teamTwo;
 
-    if(data[0][0]){
-        console.log(data[0][0]);
-        busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
-        teamOne = data[1]
-    }
-    if(data[0][1]){
-        busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
-        teamTwo = data[2]
-    }
+        if (data[0][0]) {
+            busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
+            teamOne = data[1]
+        }
+        if (data[0][1]) {
+            busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
+            teamTwo = data[2]
+        }
 
         console.log(teamOne);
         console.log(teamTwo);
 
-
-        // const combattantTeamOne = [
-        //     {
-        //         nom: "guerrier1",
-        //         health_point: 100,
-        //         degats: 20
-        //     },
-        //     {
-        //         nom: "guerrier2",
-        //         health_point: 100,
-        //         degats: 14
-        //     },
-        //     {
-        //         nom: "guerrier3",
-        //         health_point: 100,
-        //         degats: 15
-        //     },
-        //     {
-        //         nom: "guerrier4",
-        //         health_point: 100,
-        //         degats: 17
-        //     },
-        //     {
-        //         nom: "guerrier5",
-        //         health_point: 100,
-        //         degats: 12
-        //     }
-        // ]
-        // const combattantTeamTwo = [
-        //     {
-        //         nom: "gunner1",
-        //         health_point: 100,
-        //         degats: 20,
-
-        //     },
-        //     {
-        //         nom: "gunner2",
-        //         health_point: 100,
-        //         degats: 16,
-
-        //     },
-        //     {
-        //         nom: "gunner3",
-        //         health_point: 100,
-        //         degats: 15,
-
-        //     },
-        //     {
-        //         nom: "gunner4",
-        //         health_point: 100,
-        //         degats: 13,
-
-        //     },
-        //     {
-        //         nom: "gunner5",
-        //         health_point: 100,
-        //         degats: 14,
-
-        //     }
-        // ]
-
         const allFighters = teamOne.concat(teamTwo);
         const idRound = document.querySelector('.idRound')
+        let maxPv;
 
 
         let increment = 0;
@@ -200,12 +139,15 @@ fetch("http://localhost:3000/battlesettings")
             nameFighter.setAttribute('class', 'nameFighter');
 
 
+
+
+
             const health_pointNumber = document.createElement('p');
             health_pointNumber.setAttribute('class', 'numberhealth_point')
 
-    const divSkin = document.createElement('div');
-    divSkin.classList.add('imgCharacter')
-    divSkin.style.backgroundImage = `url('/images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
+            const divSkin = document.createElement('div');
+            divSkin.classList.add('imgCharacter')
+            divSkin.style.backgroundImage = `url('/images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
 
             nameFighter.innerHTML = elements.character_name
 
@@ -238,16 +180,15 @@ fetch("http://localhost:3000/battlesettings")
             defenseur[random2].health_point -= damage;
             status.innerHTML += `${attaquant[random1].character_name} attaque ${defenseur[random2].character_name} et lui inflige ${damage} damage <br>`;
 
-            let maxHealthPoint = allFighters[0].health_point
-
             for (let i = 0; i < pointVie.length && i < allFighters.length && i < img.length && i < greenBar.length; i++) {
 
                 pointVie[i].innerHTML = Math.floor(allFighters[i].health_point);
-                if(allFighters[i].health_point > maxHealthPoint){
-                    maxHealthPoint = allFighters[i].health_point
-                }
-                console.log(maxHealthPoint);
-                greenBar[i].style.width = allFighters[i].health_point * 100 / maxHealthPoint + '%';
+
+                // if(allFighters[i].health_point > maxHealthPoint){
+                //     maxHealthPoint = allFighters[i].health_point
+                // }
+
+                greenBar[i].style.width = (100 / allFighters[i].health_point) * Math.max(allFighters[i].health_point) + '%';
 
 
 
