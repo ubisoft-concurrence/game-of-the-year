@@ -85,7 +85,7 @@ startBtn.addEventListener("click", () => {
     })
     .then(function(response) {
       if (response.ok) {
-        alert("Character created!");
+        alert("Choice updated!");
       }
     })
     .catch(function(error) {
