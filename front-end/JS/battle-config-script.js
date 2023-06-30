@@ -18,14 +18,35 @@ function drop(event) {
     divGang2.appendChild(pElement);
   }
 
-  console.log(gang1);
-  console.log(gang2);
+  let gang1 = [];
+  let gang2 = [];
 }
 
-function drag(event) {
-  event.dataTransfer.setData("text", event.target);
-}
+  let output = document.getElementById('ListPlayer');
+  fetch('http://localhost:3000/characters')
+    .then(response => response.json())
+    .then(characters => {
+      console.log(characters)
+      let i = 0
+      characters.forEach(element => {
+        i++;
+        console.log(element)
+        output.innerHTML += `<div class='divbackground textDiv' draggable='true' ondragstart='drag(event)' id='drag${i}'>`
+          + `|` + element.character_name + `|` + element.class_name + `| LV:` + element.character_level + `|` + `</div>`;
+      });
+    })
 
-function allowDrop(event) {
-  event.preventDefault();
-}
+  let output2 = document.getElementById('buschoicesave');
+  let output3 = document.getElementById('buschoicesave2');
+  fetch('http://localhost:3000/vehicles')
+    .then(response => response.json())
+    .then(vehicles => {
+      console.log(vehicles)
+      let x = 0
+      vehicles.forEach(element => {
+        x++;
+        console.log(element)
+        output2.innerHTML += `<option value="bus${x}">` + element.vehicle_name + `</div>`;
+        output3.innerHTML += `<option value="bus${x}">` + element.vehicle_name + `</div>`;
+      });
+    })

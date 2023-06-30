@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Config</title>
     <link rel="stylesheet" href="../CSS/battle-config-style.css">
+    <link rel="icon" type="image/png" href="../../images/pageicon.png">
 </head>
 <body>
     
@@ -16,9 +17,8 @@
             <h2>Gang1</h2>
         </div>
         <div class="buschoice1">
-            <select name="Bus" id="buschoicesave" required>
+            <select name="Bus1" id="buschoicesave" required>
                 <option value="" hidden selected>Choose a vehicle</option>
-                <option value="bus">Bus</option>
             </select>
         </div>
         <section class="list" ondrop="drop(event)" ondragover="allowDrop(event)" id="Gang1">
@@ -30,43 +30,8 @@
         <div class="playerlisthead">
             <h2>Player List</h2>
         </div>
-        <section class="list2" ondrop="drop(event)" ondragover="allowDrop(event)" id="PlayerList">
-            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag1">
-                |<p>Jean-Louis</p>|
-                <p>Slasher</p>|
-                <p>LV:</p>|
-            </div>
-
-            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag2">
-                |<p>Josianne</p>|
-                <p>Wall</p>|
-                <p>LV:</p>|
-            </div>
-
-            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag3">
-                |<p>Phillipe</p>| 
-                <p>Killer</p>| 
-                <p>LV:</p>| 
-            </div>
-
-            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag4">
-                |<p>Dider</p>| 
-                <p>Monster</p>| 
-                <p>LV:</p>| 
-            </div>
-
-            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag5">
-                |<p>Germaine</p>| 
-                <p>Gunner</p>| 
-                <p>LV:</p>| 
-            </div>
-
-            <div class="divbackground textDiv" draggable="true" ondragstart="drag(event)" id="drag6">
-                |<p>Corentin</p>| 
-                <p>Albreak</p>| 
-                <p>LV:</p>|
-            </div>
-
+        <section class="list2" ondrop="drop(event)" ondragover="allowDrop(event)" id="ListPlayer">
+        
         </section>
     </div>
 
@@ -75,9 +40,8 @@
             <h2>Gang2</h2>
         </div>
         <div class="buschoice2">
-            <select name="Bus" id="buschoicesave" required>
+            <select name="Bus2" id="buschoicesave2" required>
                 <option value="" hidden selected>Choose a vehicle</option>
-                <option value="bus">Bus</option>
             </select>
         </div>
         <section class="list"ondrop="drop(event)" ondragover="allowDrop(event)" id="Gang2">
