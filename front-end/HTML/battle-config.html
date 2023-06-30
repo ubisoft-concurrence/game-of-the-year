@@ -18,7 +18,6 @@
         </div>
         <div class="buschoice1">
             <select name="Bus1" id="buschoicesave" required>
-                <option value="" hidden selected>Choose a vehicle</option>
             </select>
         </div>
         <section class="list" ondrop="drop(event)" ondragover="allowDrop(event)" id="Gang1">
@@ -41,7 +40,6 @@
         </div>
         <div class="buschoice2">
             <select name="Bus2" id="buschoicesave2" required>
-                <option value="" hidden selected>Choose a vehicle</option>
             </select>
         </div>
         <section class="list"ondrop="drop(event)" ondragover="allowDrop(event)" id="Gang2">
@@ -52,7 +50,8 @@
 
 <div class="center">
     <button onclick="window.location.href='./chara-creator.html';">Character Creator</button>
-    <button onclick="window.location.href='./turn-based-battle.html';">Start the Battle</button>
+    <button id="btn-start">Start the Battle</button>
+    <!-- onclick="window.location.href='./turn-based-battle.html';" -->
 </div>
 
 </body>
