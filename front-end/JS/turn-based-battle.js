@@ -97,17 +97,25 @@ const busTeamTwo = document.querySelector('#busTeamTwo');
 fetch("http://localhost:3000/battlesettings")
     .then(res => res.json())
     .then(data => {
-
+        console.log(data);
         let teamOne;
         let teamTwo;
 
-        if (data[0][0]) {
+        let divTeamOne;
+        let divTeamTwo;
+        
+        if (data[0][0] && data[1]) {
             busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
             teamOne = data[1]
+            divTeamOne = document.createElement('div')
+            divTeamOne.classList.add('teamOne')
+            
         }
-        if (data[0][1]) {
+        if (data[0][1] && data[2]) {
             busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
             teamTwo = data[2]
+            divTeamTwo = document.createElement('div')
+            divTeamTwo.classList.add('teamTwo')
         }
 
         console.log(teamOne);
@@ -118,7 +126,7 @@ fetch("http://localhost:3000/battlesettings")
 
 
         let increment = 0;
-        allFighters.forEach(elements => {
+        teamOne.forEach(elements => {
             console.log(elements);
             increment++;
             const divGrid = document.createElement('div');
@@ -137,9 +145,41 @@ fetch("http://localhost:3000/battlesettings")
             const nameFighter = document.createElement('p')
             nameFighter.setAttribute('class', 'nameFighter');
 
+            const health_pointNumber = document.createElement('p');
+            health_pointNumber.setAttribute('class', 'numberhealth_point')
+
+            const divSkin = document.createElement('div');
+            divSkin.classList.add('imgCharacter')
+            divSkin.style.backgroundImage = `url('/images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
+
+            nameFighter.innerHTML = elements.character_name
 
 
+            divGreenbar.append(health_pointNumber)
+            divLifebar.appendChild(divGreenbar)
+            divGrid.append(nameFighter, divLifebar, divSkin)
+            divTeamOne.append(divGrid)
+            getFighters.appendChild(divTeamOne)
 
+        })
+        teamTwo.forEach(elements => {
+            console.log(elements);
+            increment++;
+            const divGrid = document.createElement('div');
+
+            const skin = elements.skin
+            const skinFirstLetter = skin.charAt(0).toUpperCase()
+
+            divGrid.classList.add('grid', `grid${increment}`)
+
+            const divLifebar = document.createElement('div');
+            divLifebar.classList.add('lifebar');
+
+            const divGreenbar = document.createElement('div');
+            divGreenbar.classList.add('greenbar');
+
+            const nameFighter = document.createElement('p')
+            nameFighter.setAttribute('class', 'nameFighter');
 
             const health_pointNumber = document.createElement('p');
             health_pointNumber.setAttribute('class', 'numberhealth_point')
@@ -154,9 +194,11 @@ fetch("http://localhost:3000/battlesettings")
             divGreenbar.append(health_pointNumber)
             divLifebar.appendChild(divGreenbar)
             divGrid.append(nameFighter, divLifebar, divSkin)
-            getFighters.appendChild(divGrid)
+            divTeamTwo.append(divGrid)
+            getFighters.appendChild(divTeamTwo)
 
         })
+
         busContainer.appendChild(getFighters)
 
         const pointVie = document.querySelectorAll('.numberhealth_point');
@@ -171,28 +213,24 @@ fetch("http://localhost:3000/battlesettings")
         }
 
         let pvMax = []
-        for(let figther of allFighters) {
+        for (let figther of allFighters) {
             pvMax.push(figther.health_point)
         }
         console.log(pvMax)
 
 
         // function attack
+        const status = document.querySelector('.infosRound')
         function attack(attaquant, defenseur, random1, random2) {
 
             const damage = attaquant[random1].attack;
             let randomAll = genererNombreAleatoire(0, allFighters.length - 1)
-            const status = document.querySelector('.infosRound')
             defenseur[random2].health_point -= damage;
             status.innerHTML += `${attaquant[random1].character_name} attaque ${defenseur[random2].character_name} et lui inflige ${damage} damage <br>`;
-            
+
             for (let i = 0; i < pointVie.length && i < allFighters.length && i < img.length && i < greenBar.length; i++) {
 
                 pointVie[i].innerHTML = Math.floor(allFighters[i].health_point);
-
-                // if(allFighters[i].health_point > maxHealthPoint){
-                //     maxHealthPoint = allFighters[i].health_point
-                // }
 
                 greenBar[i].style.width = (100 / pvMax[i]) * allFighters[i].health_point + '%';
 
@@ -217,6 +255,7 @@ fetch("http://localhost:3000/battlesettings")
         const restartDiv = document.querySelector('.restartBtn')
         // turn based combat
         let i = 0;
+        let intervalId = null;
         function fight() {
             let randomIndexOne = genererNombreAleatoire(0, teamOne.length - 1);
             let randomIndexTwo = genererNombreAleatoire(0, teamTwo.length - 1);
@@ -235,17 +274,26 @@ fetch("http://localhost:3000/battlesettings")
                     attack(teamTwo, teamOne, randomIndexTwo, randomIndexOne)
                 }
             }
-            // else{
-            //     const restart = document.createElement('button')
-            //     restart.classList.add('restart')
-            //     restart.innerHTML = 'fgfgfgdfg'
-            //     restartDiv.append(restart)
-            //     restart.addEventListener('click', () => {
-            //         location.reload;
-            //     })
-            // }
+            let sumOnn = 0
+            let sumTwo = 0
+            for (let i = 0; i < teamOne.length; i++) {
+
+                sumOnn += teamOne[i].health_point;
+                if (sumOnn <= 0) {
+                    status.innerHTML += 'équipe 2 win';
+                    clearInterval(intervalId)
+                }
+            }
+            for (let i = 0; i < teamTwo.length; i++) {
+
+                sumTwo += teamTwo[i].health_point;
+                if (sumTwo <= 0) {
+                    status.innerHTML += 'équipe 1 win';
+                    clearInterval(intervalId)
+                }
+            }
         }
-        setInterval(fight, 500)
+        intervalId = setInterval(fight, 500)
 
 
 
