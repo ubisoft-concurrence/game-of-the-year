@@ -115,7 +115,6 @@ fetch("http://localhost:3000/battlesettings")
 
         const allFighters = teamOne.concat(teamTwo);
         const idRound = document.querySelector('.idRound')
-        let maxPv;
 
 
         let increment = 0;
@@ -171,6 +170,13 @@ fetch("http://localhost:3000/battlesettings")
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
+        let pvMax = []
+        for(let figther of allFighters) {
+            pvMax.push(figther.health_point)
+        }
+        console.log(pvMax)
+
+
         // function attack
         function attack(attaquant, defenseur, random1, random2) {
 
@@ -179,7 +185,7 @@ fetch("http://localhost:3000/battlesettings")
             const status = document.querySelector('.infosRound')
             defenseur[random2].health_point -= damage;
             status.innerHTML += `${attaquant[random1].character_name} attaque ${defenseur[random2].character_name} et lui inflige ${damage} damage <br>`;
-
+            
             for (let i = 0; i < pointVie.length && i < allFighters.length && i < img.length && i < greenBar.length; i++) {
 
                 pointVie[i].innerHTML = Math.floor(allFighters[i].health_point);
@@ -188,7 +194,7 @@ fetch("http://localhost:3000/battlesettings")
                 //     maxHealthPoint = allFighters[i].health_point
                 // }
 
-                greenBar[i].style.width = (100 / allFighters[i].health_point) * Math.max(allFighters[i].health_point) + '%';
+                greenBar[i].style.width = (100 / pvMax[i]) * allFighters[i].health_point + '%';
 
 
 
@@ -239,7 +245,7 @@ fetch("http://localhost:3000/battlesettings")
             //     })
             // }
         }
-        setInterval(fight, 5000)
+        setInterval(fight, 500)
 
 
 
