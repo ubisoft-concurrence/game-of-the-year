@@ -73,7 +73,23 @@ startBtn.addEventListener("click", () => {
     gang2.push(pseudo);
   });
 
-  console.log(gang1);
-  console.log(gang2);
-});
+  const dataGang = {
+    liste1: gang1,
+    liste2: gang2 
+  };
 
+  fetch("http://localhost:3000/choice", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataGang)
+    })
+    .then(function(response) {
+      if (response.ok) {
+        alert("Character created!");
+      }
+    })
+    .catch(function(error) {
+      // Gérer les erreurs ici
+      alert("Some data is missing...");
+  });
+});
