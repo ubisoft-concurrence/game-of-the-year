@@ -86,7 +86,7 @@ formCharacter.addEventListener("submit", function (event) {
   };
   console.log(dataCharacter);
   
-  fetch("http://localhost:5000/character/create", {
+  fetch("http://localhost:3000/character/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dataCharacter)
@@ -103,3 +103,34 @@ formCharacter.addEventListener("submit", function (event) {
 });
 
 
+//Fetch vehicles
+const formVehicle = document.getElementById('BusCreator');
+
+formVehicle.addEventListener("submit", function (event) {
+  event.preventDefault(); 
+  
+  const dataVehicle = {
+    vehicle_name: document.getElementById("vehicle-name").value,
+
+    color: document.getElementById('color-select').value,
+
+    buff: document.getElementById('buff-select').value,
+    nerf: document.getElementById('debuff-select').value,
+  };
+  console.log(dataVehicle);
+  
+  fetch("http://localhost:3000/vehicle/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataVehicle)
+    })
+    .then(function(response) {
+      if (response.ok) {
+        alert("Vehicle created!");
+      }
+    })
+    .catch(function(error) {
+      // Gérer les erreurs ici
+      alert("Some data is missing...");
+  });
+});
