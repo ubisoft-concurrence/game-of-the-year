@@ -55,6 +55,7 @@ export async function choice(gang) {
             `, [vehicleId, gang[i]]);
     }
 }
+// choice([ 'MagicBus', 'Kanak', 'ZePO' ]);
 
 //*--------FOR PAGE 3 (battle)--------*\\
 //Configure fighters stats function

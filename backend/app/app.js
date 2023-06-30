@@ -46,11 +46,9 @@ app.get("/vehicles", async (req, res) => {
 //Character(s) and vehicle(s) choice
 app.post("/choice", async (req, res) => {
   const dataChoice = req.body;
-  console.log(dataChoice.liste1);
-  console.log(dataChoice.liste2);
-  // await cleanChoice();
-  // await choice(dataChoice.liste1);
-  // await choice(dataChoice.liste2);
+  await cleanChoice();
+  await choice(dataChoice.liste1);
+  await choice(dataChoice.liste2);
   res.status(200).send("Choice is updated !");
 });
 
