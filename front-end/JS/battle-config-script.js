@@ -29,3 +29,19 @@ let gang2=[];
      });
       
      })
+
+     let output2 = document.getElementById('buschoicesave');
+     let output3 = document.getElementById('buschoicesave2');
+     fetch('http://localhost:3000/vehicles')
+     .then(response => response.json())
+     .then(vehicles => {
+      console.log(vehicles)
+      let x = 0
+      vehicles.forEach(element => {
+        x++;
+        console.log(element)
+        output2.innerHTML += `<option value="bus${x}">` + element.vehicle_name  + `</div>`;
+        output3.innerHTML += `<option value="bus${x}">` + element.vehicle_name  + `</div>`;
+     });
+      
+     })
