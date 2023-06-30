@@ -1,6 +1,16 @@
-html{
+
+html { 
+  background: url(../../images/backgrounds/characrea.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.zonerempli{
   background-color: #D28954;
 }
+
 
 @font-face {
     font-family: PressStart2P;
@@ -68,8 +78,8 @@ h2 {
 }
 
 .espace{
-  margin-right: 200px;
-  margin-left: 200px;
+  margin-right: 150px;
+  margin-left: 150px;
 }
 
 #checkbox-div{

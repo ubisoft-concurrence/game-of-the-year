@@ -134,3 +134,9 @@ formVehicle.addEventListener("submit", function (event) {
       alert("Some data is missing...");
   });
 });
+
+function play() {
+  var audio = document.getElementById("audio");
+  audio.play();
+}
+play();

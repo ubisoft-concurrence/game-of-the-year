@@ -45,3 +45,9 @@ let gang2=[];
      });
       
      })
+
+     function play() {
+      var audio = document.getElementById("audio");
+      audio.play();
+    }
+    play();
