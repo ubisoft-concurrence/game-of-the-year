@@ -128,9 +128,10 @@ body{
     z-index: 10000;
 }
 .greenbar{
+    overflow-x: hidden;
     display: flex;
     justify-content: flex-start;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     background-color: green;
 }
@@ -141,14 +142,6 @@ body{
     height: 144px;
 }
 
-/* .imgBus{
-    position: absolute;
-    top: 55%;
-    left: 2%;
-}
-.imgBus:nth-of-type(2){
-    left: 50%;
-} */
 .busContainer{
     display: flex;
     position: absolute;
