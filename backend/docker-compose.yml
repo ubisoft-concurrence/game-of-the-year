@@ -8,6 +8,9 @@ services:
         working_dir: /app
         volumes:
         - ./app:/app
+        - ../front-end:/app/front-end
+        - ../images:/app/images
+        - ../sounds:/app/sounds
         command: npm start
         ports:
         - 3000:3000

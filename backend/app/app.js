@@ -6,8 +6,12 @@ import {createCharacter, createVehicle,
         choice, battleSettings,
         newBattle, saveResult, levelUp,
         cleanChoice, getRanking, getHistoric } from './database.js';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 app.use(express.json());
 
 //CODE FOR CORS ERRORS
@@ -20,33 +24,23 @@ app.use((req, res, next) => {
 
 //*--------READ HTML PAGE--------*\\
 
-app.get('/', (req, res) => {
-    afficherPage('../../front-end//index.html', res);
+app.use('/', (req, res) => {
+    res.sendFile('index.html', { root: '/app/front-end/HTML' });  
+});
+app.get('/creation',(req, res) => {
+    res.sendFile('');
+});
+app.get('/chooseyourgang', (req, res) => {
+    res.sendFile('', res);
+});
+app.get('/battle', (req, res) => {
+    res.sendFile('', res);
+});
+app.get('/historic', (req, res) => {
+  res.sendFile('', res);
 });
 
-app.get('/contact', (req, res) => {
-    afficherPage('', res);
-});
 
-app.get('/listeCours', (req, res) => {
-    afficherPage('', res);
-});
-
-app.get('/user', (req, res) => {
-    afficherPage('', res);
-});
-
-app.use((req, res) => {
-    res.send('');
-});
-
-function afficherPage(pagePath, res) {
-    const fullPath = path.join(__dirname, pagePath);
-    res.sendFile(fullPath);
-}
-
-
-  
 //*--------FOR PAGE 1 (create characters)--------*\\
 //Insert a new character
 app.post("/character/create", async (req, res) => {
