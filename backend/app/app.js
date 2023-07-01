@@ -23,22 +23,25 @@ app.use((req, res, next) => {
   });
 
 //*--------READ HTML PAGE--------*\\
+app.use(express.static('front-end', { index: false }));
+app.use('/images', express.static('images'));
+app.use('/sounds', express.static('sounds'));
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile('index.html', { root: '/app/front-end/HTML' });  
 });
 app.get('/creation',(req, res) => {
-    res.sendFile('');
+    res.sendFile('chara-creator.html', { root: '/app/front-end/HTML' });  
 });
 app.get('/chooseyourgang', (req, res) => {
-    res.sendFile('', res);
+    res.sendFile('battle-config.html', { root: '/app/front-end/HTML' });  
 });
 app.get('/battle', (req, res) => {
-    res.sendFile('', res);
+    res.sendFile('turn-based-battle.html', { root: '/app/front-end/HTML' });  
 });
-app.get('/historic', (req, res) => {
-  res.sendFile('', res);
-});
+// app.get('/historic', (req, res) => {
+//     res.sendFile('index.html', { root: '/app/front-end/HTML' });  
+// });
 
 
 //*--------FOR PAGE 1 (create characters)--------*\\
