@@ -24,6 +24,25 @@ fetch('http://localhost:3000/vehicles')
     });
   })
 
+//FUNCTION FOR VEHICLE LIST SELECTION PERMISION
+// function listOptions(selectedValue,event) {
+//   const lists = document.querySelectorAll('.dropdown');
+//   for (let i = 0; i < lists.length; i++) {
+//     const list = lists[i];
+
+//     for (let j = 0; j < list.length; j++) {
+//       const option = list.options[j];
+
+//       if (option.value === selectedValue && list.id !== event.target.id) {
+//         option.disabled = true;
+//         option.selected = false;
+//       } else {
+//         option.disabled = false;
+//       }
+//     }
+//   }
+// }
+
 //DRAG AND DROP
 function allowDrop(ev) {
   ev.preventDefault();
@@ -31,12 +50,13 @@ function allowDrop(ev) {
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
-function drop(even) {   
+function drop(even) {
   even.preventDefault();
   var fetchData = even.dataTransfer.getData("text");
   even.currentTarget.appendChild(document.getElementById(fetchData));
 }
 
+//BATTLE CONFIGURATION
 const divGang1 = document.getElementById("Gang1");
 const divGang2 = document.getElementById("Gang2");
 const busGang1Select = document.getElementById("buschoicesave");
@@ -46,7 +66,7 @@ const startBtn = document.getElementById("btn-start");
 startBtn.addEventListener("click", () => {
   const busGang1 = busGang1Select.options[busGang1Select.selectedIndex].textContent;
   const busGang2 = busGang2Select.options[busGang2Select.selectedIndex].textContent;
-  
+
   let gang1 = [];
   let gang2 = [];
 
@@ -55,34 +75,34 @@ startBtn.addEventListener("click", () => {
 
   let fighters1 = document.querySelectorAll("#Gang1 .player");
   let fighters2 = document.querySelectorAll("#Gang2 .player");
-  
-  fighters1.forEach(function(fighter) {
+
+  fighters1.forEach(function (fighter) {
     let pseudo = fighter.querySelector(".pseudo").textContent;
     gang1.push(pseudo);
   });
 
-  fighters2.forEach(function(fighter) {
+  fighters2.forEach(function (fighter) {
     let pseudo = fighter.querySelector(".pseudo").textContent;
     gang2.push(pseudo);
   });
 
   const dataGang = {
     liste1: gang1,
-    liste2: gang2 
+    liste2: gang2
   };
 
   fetch("http://localhost:3000/choice", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dataGang)
-    })
-    .then(function(response) {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dataGang)
+  })
+    .then(function (response) {
       if (response.ok) {
         alert("Choice updated!");
       }
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // Gérer les erreurs ici
       alert("Some data is missing...");
-  });
+    });
 });
