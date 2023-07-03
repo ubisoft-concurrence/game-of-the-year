@@ -117,7 +117,7 @@ fetch("http://localhost:3000/battlesettings")
             divTeamTwo = document.createElement('div')
             divTeamTwo.classList.add('teamTwo')
         }
-
+        
         console.log(teamOne);
         console.log(teamTwo);
 

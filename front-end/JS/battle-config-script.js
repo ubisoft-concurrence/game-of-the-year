@@ -90,6 +90,7 @@ startBtn.addEventListener("click", () => {
     liste1: gang1,
     liste2: gang2
   };
+  console.log(dataGang);
 
   fetch("http://localhost:3000/choice", {
     method: "POST",
