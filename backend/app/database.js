@@ -48,13 +48,15 @@ export async function choice(gang) {
             `, gang[0]);
     
     vehicleId = vehicleId[0].map(result => result.vehicle_id);
-
     for (let i = 1; i < gang.length; i++) {
         await pool.query(`
             UPDATE characters SET vehicle_id = ? WHERE character_name = ?
             `, [vehicleId, gang[i]]);
     }
 }
+// await cleanChoice();
+// await choice(['PorteGuerre', 'ZePO'])
+// await choice(['MagicBus', 'Commit', 'Zescrum', 'fetch', 'Merge'])
 
 //*--------FOR PAGE 3 (battle)--------*\\
 //Configure fighters stats function
@@ -63,7 +65,7 @@ function configure(fighters) {
         if (character.buff == "health") {
             character.health_point += character.health_point * 0.2;
         } else if (character.buff == "attack") {
-            character.attack += character.attack_point * 0.2;
+            character.attack += character.attack * 0.2;
         }
 
         character.health_point += character.health_point * 0.1 * character.character_level;
@@ -78,11 +80,9 @@ export async function battleSettings() {
         JOIN vehicles ON characters.vehicle_id = vehicles.vehicle_id
         WHERE characters.vehicle_id IS NOT NULL
         `);
-    
     let vehicleId = vehicle[0].map(
                         result => result.vehicle_id
                         );
-
     let gang1 = await pool.query(`
         SELECT
             characters.character_name,
@@ -91,6 +91,7 @@ export async function battleSettings() {
             classes.health_point,
             classes.attack,
             characters.vehicle_id,
+            vehicles.color,
             vehicles.buff,
             vehicles.nerf
         FROM 
@@ -106,7 +107,6 @@ export async function battleSettings() {
         WHERE
             characters.vehicle_id = ?
         `, vehicleId[0]);
-
     let gang2 = await pool.query(`
         SELECT
             characters.character_name,
@@ -115,6 +115,7 @@ export async function battleSettings() {
             classes.attack,
             characters.character_level,
             characters.vehicle_id,
+            vehicles.color,
             vehicles.buff,
             vehicles.nerf
         FROM 
@@ -130,7 +131,6 @@ export async function battleSettings() {
         WHERE
             characters.vehicle_id = ?
         `, vehicleId[1]);
-    
     configure(gang1[0]);
     configure(gang2[0]);
     gang1[0] = gang1[0].map(({ character_name, skin, health_point, attack }) => ({
@@ -145,8 +145,9 @@ export async function battleSettings() {
         health_point,
         attack
       }));
-    return[vehicle[0], gang1[0], gang2[0]];
+    return [vehicle[0], gang1[0], gang2[0]];
 }
+// battleSettings()
 //Save a battle
 export async function newBattle() {
     await pool.query(`
