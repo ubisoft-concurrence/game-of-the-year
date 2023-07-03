@@ -185,9 +185,9 @@ export async function levelUp(winners) {
     for (let character of winners) {
         await pool.query(`
             UPDATE characters 
-            SET character_level = ? 
+            SET character_level = character_level + 1
             WHERE character_name = ?
-            `, [character.character_level, character.character_name]
+            `, [character.character_name]
         );
     }
 }

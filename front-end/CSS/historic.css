@@ -7,7 +7,6 @@ body {
     background-color: #D28954;
 }
 
-
 @font-face {
     font-family: PressStart2P;
     src: url(../font/PressStart2P-Regular.ttf);
@@ -53,9 +52,9 @@ main {
 .rank-title-div{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 0 20px;
-    padding: ;
+    justify-content: space-around;
+    height: 50px;
+    width:100%;
     background-color: #919191;
 }
 .historic h2{
