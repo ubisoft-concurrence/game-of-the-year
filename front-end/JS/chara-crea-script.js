@@ -93,6 +93,7 @@ formCharacter.addEventListener("submit", function (event) {
     })
     .then(function(response) {
       if (response.ok) {
+        new Audio("../../sounds/voices/narrator/NewChallenger.mp3").play();
         alert("Character created!");
       }
     })
@@ -126,6 +127,7 @@ formVehicle.addEventListener("submit", function (event) {
     })
     .then(function(response) {
       if (response.ok) {
+          new Audio("../../sounds/voices/narrator/Great.mp3").play();
         alert("Vehicle created!");
       }
     })
@@ -136,7 +138,7 @@ formVehicle.addEventListener("submit", function (event) {
 });
 
 function play() {
-  var audio = document.getElementById("audio");
-  audio.play();
+  var audio1 = document.getElementById("audio");
+  audio1.play();
 }
 play();
