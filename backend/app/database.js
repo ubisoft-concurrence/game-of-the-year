@@ -60,7 +60,7 @@ export async function choice(gang) {
 
 //*--------FOR PAGE 3 (battle)--------*\\
 //Configure fighters stats function
-async function configure(fighters) {
+function configure(fighters) {
     for (let character of fighters) {
         if (character.buff == "health") {
             character.health_point += character.health_point * 0.2;
@@ -80,11 +80,9 @@ export async function battleSettings() {
         JOIN vehicles ON characters.vehicle_id = vehicles.vehicle_id
         WHERE characters.vehicle_id IS NOT NULL
         `);
-    console.log(vehicle[0]);
-    let vehicleId = await vehicle[0].map(
+    let vehicleId = vehicle[0].map(
                         result => result.vehicle_id
                         );
-    console.log(vehicleId);
     let gang1 = await pool.query(`
         SELECT
             characters.character_name,
@@ -133,23 +131,20 @@ export async function battleSettings() {
         WHERE
             characters.vehicle_id = ?
         `, vehicleId[1]);
-    console.log(gang1[0]);
-    console.log(gang2[0]);
-    await configure(gang1[0]);
-    await configure(gang2[0]);
-    gang1[0] = await gang1[0].map(({ character_name, skin, health_point, attack }) => ({
+    configure(gang1[0]);
+    configure(gang2[0]);
+    gang1[0] = gang1[0].map(({ character_name, skin, health_point, attack }) => ({
         character_name,
         skin,
         health_point,
         attack
       }));
-    gang2[0] = await gang2[0].map(({ character_name, skin, health_point, attack }) => ({
+    gang2[0] = gang2[0].map(({ character_name, skin, health_point, attack }) => ({
         character_name,
         skin,
         health_point,
         attack
       }));
-    console.log([vehicle[0], gang1[0], gang2[0]]);
     return [vehicle[0], gang1[0], gang2[0]];
 }
 // battleSettings()

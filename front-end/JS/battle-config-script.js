@@ -63,7 +63,8 @@ const busGang1Select = document.getElementById("buschoicesave");
 const busGang2Select = document.getElementById("buschoicesave2");
 const startBtn = document.getElementById("btn-start");
 
-startBtn.addEventListener("click", () => {
+startBtn.addEventListener("click", (event) => {
+  event.preventDefault();
   const busGang1 = busGang1Select.options[busGang1Select.selectedIndex].textContent;
   const busGang2 = busGang2Select.options[busGang2Select.selectedIndex].textContent;
 
@@ -90,7 +91,6 @@ startBtn.addEventListener("click", () => {
     liste1: gang1,
     liste2: gang2
   };
-  console.log(dataGang);
 
   fetch("http://localhost:3000/choice", {
     method: "POST",
@@ -99,11 +99,11 @@ startBtn.addEventListener("click", () => {
   })
     .then(function (response) {
       if (response.ok) {
-        alert("Choice updated!");
+        window.location.href='./turn-based-battle.html'
       }
+      
     })
     .catch(function (error) {
-      // Gérer les erreurs ici
       alert("Some data is missing...");
     });
 });
