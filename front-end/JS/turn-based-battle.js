@@ -274,31 +274,32 @@ fetch("http://localhost:3000/battlesettings")
                     attack(teamTwo, teamOne, randomIndexTwo, randomIndexOne)
                 }
             }
-            let sumOnn = 0
-            let sumTwo = 0
-            for (let i = 0; i < teamOne.length; i++) {
 
-                sumOnn += teamOne[i].health_point;
-                if (sumOnn <= 0) {
-                    status.innerHTML += 'équipe 2 win';
-                    clearInterval(intervalId)
+            function checkWinner(teamOne, teamTwo) {
+                const sumHealthPointsTeamOne = teamOne.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
+                const sumHealthPointsTeamTwo = teamTwo.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
+              
+                if (sumHealthPointsTeamOne <= 0 && sumHealthPointsTeamTwo <= 0) {
+                  status.innerHTML += "Match nul";
+                  clearInterval(intervalId)
+                } else if (sumHealthPointsTeamOne <= 0) {
+                  status.innerHTML += "Équipe 2 gagne";
+                  clearInterval(intervalId)
+                } else if (sumHealthPointsTeamTwo <= 0) {
+                  status.innerHTML += "Équipe 1 gagne";
+                  clearInterval(intervalId)
                 }
-            }
-            for (let i = 0; i < teamTwo.length; i++) {
+              }
+              
+              // Appeler la fonction checkWinner avec vos équipes comme arguments
+              checkWinner(teamOne, teamTwo);
 
-                sumTwo += teamTwo[i].health_point;
-                if (sumTwo <= 0) {
-                    status.innerHTML += 'équipe 1 win';
-                    clearInterval(intervalId)
-                }
-            }
-        }
-        intervalId = setInterval(fight, 500)
+}
+        intervalId = setInterval(fight, 50)
 
 
 
         // function to verify if fighter is in live
-
         function inLive(joueur, random) {
             return joueur[random].health_point > 0
         }
