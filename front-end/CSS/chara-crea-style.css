@@ -8,7 +8,7 @@ html {
 }
 
 .zonerempli{
-  background-color: #D28954;
+  background: linear-gradient(#D28954, #d27654);
 }
 
 
@@ -89,7 +89,7 @@ h2 {
 
 .selected {
   transform: scale(0.9);
-  border: 1px green solid;
+  border: 1px #ef0909 solid;
   box-shadow: 0 0 5px #333;
   z-index: -1;
 }
@@ -143,4 +143,11 @@ label img {
   width: 100px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
+}
+
+.margin{
+  margin-right: 200px;
+  margin-left: 200px;
+  border: solid 15px #333;
+  border-radius: 10px;
 }

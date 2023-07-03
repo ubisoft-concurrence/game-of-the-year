@@ -223,9 +223,11 @@ fetch("http://localhost:3000/battlesettings")
                 idRound.innerHTML += `Round ${i} <br>`;
 
                 if (number % 2) {
+                    new Audio("../../sounds/effects/Hit.mp3").play();
                     attack(teamOne, teamTwo, randomIndexOne, randomIndexTwo)
                 }
                 else {
+                    new Audio("../../sounds/effects/Hit.mp3").play();
                     attack(teamTwo, teamOne, randomIndexTwo, randomIndexOne)
                 }
             }
@@ -239,7 +241,7 @@ fetch("http://localhost:3000/battlesettings")
             //     })
             // }
         }
-        setInterval(fight, 5000)
+        setInterval(fight, 1000)
 
 
 
