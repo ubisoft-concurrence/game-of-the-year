@@ -140,8 +140,8 @@ formVehicle.addEventListener("submit", function (event) {
 });
 
 function play() {
-  var audio1 = document.getElementById("audio");
-  audio1.play();
+  var audio = document.getElementById("audio");
+  audio.play();
 }
 play();
 

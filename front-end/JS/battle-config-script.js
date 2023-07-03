@@ -71,33 +71,47 @@ startBtn.addEventListener("click", (event) => {
   let gang1 = [];
   let gang2 = [];
 
-  let output = document.getElementById('ListPlayer');
-     fetch('http://localhost:3000/characters')
-     .then(response => response.json())
-     .then(characters => {
-      console.log(characters)
-      let i = 0
-      characters.forEach(element => {
-        i++;
-        console.log(element)
-        output.innerHTML += `<div class='divbackground textDiv' draggable='true' ondragstart='drag(event)' id='drag${i}'>` 
-        + `|` + element.character_name  + `|` + element.class_name  + `| LV:` + element.character_level  + `|` + `</div>`;
-     });
-      
-     })
+  gang1.push(busGang1);
+  gang2.push(busGang2);
 
-     let output2 = document.getElementById('buschoicesave');
-     let output3 = document.getElementById('buschoicesave2');
-     fetch('http://localhost:3000/vehicles')
-     .then(response => response.json())
-     .then(vehicles => {
-      console.log(vehicles)
-      let x = 0
-      vehicles.forEach(element => {
-        x++;
-        console.log(element)
-        output2.innerHTML += `<option value="bus${x}">` + element.vehicle_name  + `</div>`;
-        output3.innerHTML += `<option value="bus${x}">` + element.vehicle_name  + `</div>`;
-     });
+  let fighters1 = document.querySelectorAll("#Gang1 .player");
+  let fighters2 = document.querySelectorAll("#Gang2 .player");
+
+  fighters1.forEach(function (fighter) {
+    let pseudo = fighter.querySelector(".pseudo").textContent;
+    gang1.push(pseudo);
+  });
+
+  fighters2.forEach(function (fighter) {
+    let pseudo = fighter.querySelector(".pseudo").textContent;
+    gang2.push(pseudo);
+  });
+
+  const dataGang = {
+    liste1: gang1,
+    liste2: gang2
+  };
+
+  fetch("http://localhost:3000/choice", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dataGang)
+  })
+    .then(function (response) {
+      if (response.ok) {
+        window.location.href='./turn-based-battle.html'
+      }
       
-     })
+    })
+    .catch(function (error) {
+      alert("Some data is missing...");
+    });
+});
+
+function play() {
+  var audio1 = document.getElementById("audioBegin");
+  var audio2 = document.getElementById("audio");
+  audio1.play();
+  audio2.play();
+}
+play();

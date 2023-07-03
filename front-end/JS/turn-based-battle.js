@@ -177,17 +177,30 @@ fetch("http://localhost:3000/battlesettings")
                     attack(teamTwo, teamOne, randomIndexTwo, randomIndexOne)
                 }
             }
-            // else{
-            //     const restart = document.createElement('button')
-            //     restart.classList.add('restart')
-            //     restart.innerHTML = 'fgfgfgdfg'
-            //     restartDiv.append(restart)
-            //     restart.addEventListener('click', () => {
-            //         location.reload;
-            //     })
-            // }
-        }
-        setInterval(fight, 5000)
+
+            function checkWinner(teamOne, teamTwo) {
+                const sumHealthPointsTeamOne = teamOne.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
+                const sumHealthPointsTeamTwo = teamTwo.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
+              
+                if (sumHealthPointsTeamOne <= 0 && sumHealthPointsTeamTwo <= 0) {
+                  status.innerHTML += "Match nul";
+                  clearInterval(intervalId)
+                } else if (sumHealthPointsTeamOne <= 0) {             
+                    new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
+                  status.innerHTML += "Équipe 2 gagne";
+                  clearInterval(intervalId)
+                } else if (sumHealthPointsTeamTwo <= 0) {
+                    new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
+                  status.innerHTML += "Équipe 1 gagne";
+                  clearInterval(intervalId)
+                }
+              }
+              
+              // Appeler la fonction checkWinner avec vos équipes comme arguments
+              checkWinner(teamOne, teamTwo);
+
+}
+        intervalId = setInterval(fight, 1000)
 
 
 
@@ -197,3 +210,13 @@ fetch("http://localhost:3000/battlesettings")
         }
 
     })
+
+    function play() {
+        var audio1 = document.getElementById("audioFight");
+        var audio2 = document.getElementById("audio");
+        var audio3 = document.getElementById("audioRoad");
+        audio1.play();
+        audio2.play();
+        audio3.play();
+      }
+      play();
