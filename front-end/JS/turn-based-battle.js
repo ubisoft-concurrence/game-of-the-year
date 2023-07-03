@@ -189,6 +189,8 @@ fetch("http://localhost:3000/battlesettings")
                 } else if (sumHealthPointsTeamTwo <= 0) {
                   status.innerHTML += "Équipe 1 gagne";
                   clearInterval(intervalId)
+                }else if(sumHealthPointsTeamTwo <= 0 || sumHealthPointsTeamOne <= 0){
+                    console.log('you win');
                 }
               }
               
