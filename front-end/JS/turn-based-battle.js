@@ -102,11 +102,11 @@ fetch("http://localhost:3000/battlesettings")
         let teamTwo;
 
         if (data[0][0]) {
-            busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
+            busTeamOne.src = `../images/sprites/bus/${data[0][0].color}.png`
             teamOne = data[1]
         }
         if (data[0][1]) {
-            busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
+            busTeamTwo.src = `../images/sprites/bus/${data[0][1].color}.png`
             teamTwo = data[2]
         }
 
@@ -147,7 +147,7 @@ fetch("http://localhost:3000/battlesettings")
 
             const divSkin = document.createElement('div');
             divSkin.classList.add('imgCharacter')
-            divSkin.style.backgroundImage = `url('/images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
+            divSkin.style.backgroundImage = `url('../images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
 
             nameFighter.innerHTML = elements.character_name
 
