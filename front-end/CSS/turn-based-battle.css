@@ -78,9 +78,12 @@ body{
 #getFighters{
     display: inline-flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-evenly;
     position: absolute;
     top: -50px;
+}
+.teamOne, .teamTwo{
+    display: flex;
 }
 .grid1{
     left: 14%;
@@ -107,11 +110,7 @@ body{
 .grid8{
     right: 5%;
 }
-.grid9 .imgCharacter,
-.grid6 .imgCharacter,
-.grid7 .imgCharacter,
-.grid10 .imgCharacter,
-.grid8 .imgCharacter {
+.teamTwo .grid .imgCharacter{
     transform: scaleX(-1);
 }
 
@@ -138,7 +137,7 @@ body{
 .grid .imgCharacter{
     background-image: url(../../images/sprites/battle/Wall2.png);
     background-size: cover;
-    width: 90px;
+    width: 85px;
     height: 144px;
 }
 
