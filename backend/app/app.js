@@ -64,7 +64,6 @@ app.post("/battlefinish", async (req, res) => {
   await newBattle();
   await saveResult(fighters);
   await levelUp(winners);
-  await cleanChoice();
   res.status(201).send("Results saved !")
 });
 

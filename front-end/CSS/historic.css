@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    background-color: #D28954;
+}
+
+
+@font-face {
+    font-family: PressStart2P;
+    src: url(../font/PressStart2P-Regular.ttf);
+  }
+
+h1 {
+    font-size: 40px;
+    color: #D9D9D9;
+    text-shadow: 1px 1px 2px black;
+    font-family: PressStart2P;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+main {
+    display: flex;
+    flex-direction: row;
+    width: 1500px;
+    gap: 70px;
+    margin: 50px auto;
+}  
+.ranking {
+    width: 500px;
+    height: 700px;
+    background-color: #D9D9D9;
+    border: 1px solid black;
+ }
+
+.historic{
+    width: 1000px;
+    height: 700px;
+    background-color: #D9D9D9;
+    border: 1px solid black;
+}
+.ranking h2{
+    font-size: 30px;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+    padding-bottom: 20px;
+    background-color: #73685D;
+}
+.rank-title-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 20px;
+    padding: ;
+    background-color: #919191;
+}
+.historic h2{
+    font-size: 30px;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+    padding-bottom: 20px;
+    background-color: #73685D;
+}
