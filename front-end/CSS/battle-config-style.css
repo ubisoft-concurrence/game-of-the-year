@@ -96,3 +96,9 @@ html{
   text-align: center;
   justify-content: center;
 }
+
+.player {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

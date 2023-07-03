@@ -42,17 +42,17 @@ export async function getVehicles() {
     return vehicles[0];
 }
 //Character(s) and vehicle(s) choice
-export async function choice(characters) {
-    for (let character of characters) {
-        let vehicleIdQueryResult = await pool.query(`
+export async function choice(gang) {
+    let vehicleId = await pool.query(`
             SELECT vehicle_id FROM vehicles WHERE vehicle_name = ?
-            `, character.vehicle_name);
+            `, gang[0]);
+    
+    vehicleId = vehicleId[0].map(result => result.vehicle_id);
 
-        let vehicleId = vehicleIdQueryResult[0].map(result => result.vehicle_id);
-
+    for (let i = 1; i < gang.length; i++) {
         await pool.query(`
             UPDATE characters SET vehicle_id = ? WHERE character_name = ?
-            `, [vehicleId, character.character_name]);
+            `, [vehicleId, gang[i]]);
     }
 }
 
@@ -221,3 +221,4 @@ export async function getHistoric() {
     `);
     return historic[0];
 }
+
