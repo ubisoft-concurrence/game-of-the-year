@@ -171,23 +171,30 @@ export async function saveResult(fighters) {
         ORDER BY battle_id DESC
         LIMIT 1
         `)
-
+        
     for (let character of fighters) {
-        console.log(character.character_name)
+        let characterId = await getCharacterId(character.character_name);
         await pool.query(`
         INSERT INTO battles_characters (battle_id, character_id, result)
         VALUES  (?, ?, ? )
-        `, [lastBattleId, getCharacterId(character.character_name), character.result])
+        `, [lastBattleId[0][0].battle_id, characterId, character.result])
     }
 }
 //Update character level of the winners 
-export async function levelUp(winners) {
+export async function levelUp(fighters) {
+    let winners = [];
+    for (let fighter of fighters) {
+        if (fighter.result == "win") {
+            winners.push(fighter)
+        }
+    }
+    console.log(winners)
     for (let character of winners) {
         await pool.query(`
             UPDATE characters 
-            SET character_level = ? 
+            SET character_level = character_level + 1
             WHERE character_name = ?
-            `, [character.character_level, character.character_name]
+            `, [character.character_name]
         );
     }
 }
@@ -222,4 +229,3 @@ export async function getHistoric() {
     `);
     return historic[0];
 }
-
