@@ -150,14 +150,9 @@ body {
     height: 100%;
     background-color: green;
 }
-<<<<<<< HEAD
-.grid .imgCharacter{
-    background-image: url(../images/sprites/battle/Wall2.png);
-=======
 
 .grid .imgCharacter {
     background-image: url(../../images/sprites/battle/Wall2.png);
->>>>>>> 411a74da0f10a6fa4eaf9d120815bfcc44dfdf08
     background-size: cover;
     width: 85px;
     height: 144px;
