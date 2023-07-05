@@ -19,8 +19,8 @@ fetch('http://localhost:3000/vehicles')
     let x = 0
     vehicles.forEach(element => {
       x++;
-      output2.innerHTML += `<option value="bus${x}">` + element.vehicle_name + `</div>`;
-      output3.innerHTML += `<option value="bus${x}">` + element.vehicle_name + `</div>`;
+      output2.innerHTML += `<option value="bus${x}" onclick="playAudio2()">` + element.vehicle_name + `</div>`;
+      output3.innerHTML += `<option value="bus${x}" onclick="playAudio2()">` + element.vehicle_name + `</div>`;
     });
   })
 
@@ -105,6 +105,7 @@ startBtn.addEventListener("click", (event) => {
       
     })
     .catch(function (error) {
+      new Audio("../../sounds/voices/narrator/Oops.mp3").play();
       alert("Some data is missing...");
     });
 });
@@ -117,3 +118,6 @@ function play() {
 }
 play();
 
+function playAudio2() {
+  new Audio("../../sounds/effects/Choose.mp3").play();
+}
