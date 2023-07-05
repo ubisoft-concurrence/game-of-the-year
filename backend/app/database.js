@@ -150,10 +150,18 @@ export async function battleSettings() {
 // battleSettings()
 //Save a battle
 export async function newBattle() {
+    const lastBattleId = await pool.query(`
+        SELECT battle_id
+        FROM battles
+        ORDER BY battle_id DESC
+        LIMIT 1
+        `);
+
     await pool.query(`
-        INSERT INTO battles (date)
-        VALUES (CURDATE())
-        `)
+        INSERT INTO battles (battle_id, date)
+        VALUES (?, CURDATE())
+        `, lastBattleId[0][0].battle_id + 1
+        );
 }
 //Get character id by name (for saveResult())
 export async function getCharacterId(name) {

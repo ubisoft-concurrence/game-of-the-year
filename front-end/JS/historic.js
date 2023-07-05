@@ -28,29 +28,28 @@ fetch('http://localhost:3000/historic')
         });
 
     console.log("Listes des batailles:");
-    console.log(battles[1][1].character_name);
+    console.log(battles);
     console.log(Object.keys(battles).length);
     
-
     for (let j = 1; j <= Object.keys(battles).length; j++) {
-      histoDiv.innerHTML += `<div id="battle${j}" class="battle">BATTLE ${j}</div>`
-      histoDiv.innerHTML += `<div id="winners${j}" class="winners">WINNERS<div>`
-      histoDiv.innerHTML += `<div id="losers${j}" class="losers">LOSERS<div>`
-                             
-      let battleDiv = document.getElementById(`battle${j}`)
-      let winnersDiv = document.getElementById(`winners${j}`)
-      let losersDiv = document.getElementById(`losers${j}`)
-
-      for (let k = 0; k < battles[j].length; k++) {
-        if (battles[j][k].result == "win")
-            winnersDiv.innerHTML += `<p>` + battles[j][k].character_name + `</p>`
-        else
-            losersDiv.innerHTML += `<p>` + battles[j][k].character_name + `</p>`
+        histoDiv.innerHTML += `<div id="battle${j}" class="battle">BATTLE ${j}</div>`
+        histoDiv.innerHTML += `<div id="winners${j}" class="winners">WINNERS<div>`
+        histoDiv.innerHTML += `<div id="losers${j}" class="losers">LOSERS<div>`
+                               
+        let battleDiv = document.getElementById(`battle${j}`)
+        let winnersDiv = document.getElementById(`winners${j}`)
+        let losersDiv = document.getElementById(`losers${j}`)
+  
+        for (let k = 0; k < battles[j].length; k++) {
+          if (battles[j][k].result == "win")
+              winnersDiv.innerHTML += `<p>` + battles[j][k].character_name + `</p>`
+          else
+              losersDiv.innerHTML += `<p>` + battles[j][k].character_name + `</p>`
+        }
+        battleDiv.appendChild(winnersDiv);
+        battleDiv.appendChild(losersDiv);
       }
-      battleDiv.appendChild(winnersDiv);
-      battleDiv.appendChild(losersDiv);
-    }
-});
+  });
 
 function play() {
   var audio = document.getElementById("audio");
