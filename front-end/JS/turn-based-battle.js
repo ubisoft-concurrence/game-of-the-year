@@ -15,6 +15,7 @@ fetch("http://localhost:3000/battlesettings")
         if (data[0][0] && data[1]) {
             busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
             teamOne = data[1]
+            console.log(teamOne);
             divTeamOne = document.createElement('div')
             divTeamOne.classList.add('teamOne')
 
@@ -22,6 +23,7 @@ fetch("http://localhost:3000/battlesettings")
         if (data[0][1] && data[2]) {
             busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
             teamTwo = data[2]
+            console.log(teamTwo)
             divTeamTwo = document.createElement('div')
             divTeamTwo.classList.add('teamTwo')
         }
@@ -30,6 +32,7 @@ fetch("http://localhost:3000/battlesettings")
         const idRound = document.querySelector('.idRound')
 
         let increment = 0;
+        // team one creation
         teamOne.forEach(elements => {
 
             increment++;
@@ -65,7 +68,7 @@ fetch("http://localhost:3000/battlesettings")
             divTeamOne.append(divGrid)
             getFighters.appendChild(divTeamOne)
 
-        })
+        }); // team two creation
         teamTwo.forEach(elements => {
             increment++;
             const divGrid = document.createElement('div');
@@ -153,7 +156,7 @@ fetch("http://localhost:3000/battlesettings")
             }
         }
 
-        const restartDiv = document.querySelector('.restartDiv');
+        const btnFinish = document.querySelector('.btnFinish');
         const restartBtn = document.querySelector('.restartBtn');
         const fightStatus = document.querySelector('#fightStatus')
         restartBtn.addEventListener('click', () => {
@@ -182,9 +185,8 @@ fetch("http://localhost:3000/battlesettings")
                 }
 
 
-                if (i === 1) {
-                    fightStatus.src = '../../images/sprites/battle/fight.png'
-                    console.log('oui');
+                if (i != 1) {
+                    fightStatus.style.display = 'none'
                 }
             }
 
@@ -195,16 +197,18 @@ fetch("http://localhost:3000/battlesettings")
                 if (sumHealthPointsTeamOne <= 0 && sumHealthPointsTeamTwo <= 0) {
                     status.innerHTML += "Match nul";
                     clearInterval(intervalId)
-                    restartDiv.style.display = 'flex'
+                    btnFinish.style.display = 'flex'
                 } else if (sumHealthPointsTeamOne <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 2 gagne<br>`;
                     clearInterval(intervalId)
-                    restartDiv.style.display = 'flex';
+                    btnFinish.style.display = 'flex';
+                    fightStatus.style.display = 'block'
                     fightStatus.src = '../../images/sprites/battle/win.png'
                 } else if (sumHealthPointsTeamTwo <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 1 gagne<br>`;
                     clearInterval(intervalId)
-                    restartDiv.style.display = 'flex';
+                    btnFinish.style.display = 'flex';
+                    fightStatus.style.display = 'block'
                     fightStatus.src = '../../images/sprites/battle/win.png'
                 }
             }
