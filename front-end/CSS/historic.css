@@ -84,6 +84,7 @@ main {
     justify-content: flex-start;
     gap: 30px;
     flex-wrap: wrap;
+    padding-left: 10%;
 }
 
 .player{
