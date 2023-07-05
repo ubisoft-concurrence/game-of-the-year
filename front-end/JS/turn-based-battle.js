@@ -15,7 +15,7 @@ fetch("http://localhost:3000/battlesettings")
         if (data[0][0] && data[1]) {
             busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
             teamOne = data[1]
-            console.log(teamOne);
+        
             divTeamOne = document.createElement('div')
             divTeamOne.classList.add('teamOne')
 
@@ -23,7 +23,6 @@ fetch("http://localhost:3000/battlesettings")
         if (data[0][1] && data[2]) {
             busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
             teamTwo = data[2]
-            console.log(teamTwo)
             divTeamTwo = document.createElement('div')
             divTeamTwo.classList.add('teamTwo')
         }
@@ -140,7 +139,7 @@ fetch("http://localhost:3000/battlesettings")
 
 
 
-                if (allFighters[i].health_point <= 0) {                    
+                if (allFighters[i].health_point <= 0) {
                     allFighters[i].health_point = 0;
                     img[i].style.backgroundPositionX = '50%';
                 }
@@ -194,24 +193,23 @@ fetch("http://localhost:3000/battlesettings")
             function increaseLevel(character) {
                 // Effectuer une requête POST pour augmenter le niveau du personnage
                 fetch('http://localhost:3000/battlefinish', {
-                  method: 'POST',
-                  body: JSON.stringify(character),
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
+                    method: 'POST',
+                    body: JSON.stringify(character),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 })
-                .then(response => {
-                  if (response.ok) {
-                    console.log(`Le niveau de ${character} a été augmenté.`);
-                    console.log(response);
-                  } else {
-                    console.log(`Une erreur s'est produite lors de l'augmentation du niveau de ${character.character_name}.`);
-                  }
-                })
-                .catch(error => {
-                  console.log(`Une erreur s'est produite lors de la requête POST : ${error}`);
-                });
-              }
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(`Le niveau de ${character} a été augmenté.`);
+                        } else {
+                            console.log(`Une erreur s'est produite lors de l'augmentation du niveau de ${character.character_name}.`);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(`Une erreur s'est produite lors de la requête POST : ${error}`);
+                    });
+            }
 
 
 
@@ -223,63 +221,47 @@ fetch("http://localhost:3000/battlesettings")
                     status.innerHTML += "Match nul";
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex'
-                    audio.pause();
-                    new Audio("../../sounds/voices/narrator/Draw.mp3").play();
                 } else if (sumHealthPointsTeamOne <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 2 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
-                    audio.pause();
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
-
                     fightStatus.src = '../../images/sprites/battle/win.png';
-                    console.log(teamTwo);
-                    for(let i = 0; i < teamTwo.length; i++){
+
+                    for (let i = 0; i < teamTwo.length; i++) {
                         teamTwo[i]["result"] = "win";
                     }
-                    for(let i = 0; i < teamOne.length; i++){
+                    for (let i = 0; i < teamOne.length; i++) {
                         teamOne[i]["result"] = "lose";
                     }
-                    console.log(teamOne);
-                    console.log(teamTwo);
+
                     const test = teamOne.concat(teamTwo)
                     increaseLevel(test)
-
-                    new Audio("../../sounds/music/Victory.mp3").play();
-                    fightStatus.src = '../../images/sprites/battle/win.png'
-
                 } else if (sumHealthPointsTeamTwo <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 1 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
-                    audio.pause();
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
-
                     fightStatus.src = '../../images/sprites/battle/win.png';
-                    console.log(teamOne);
-                    for(let i = 0; i < teamOne.length; i++){
+
+                    for (let i = 0; i < teamOne.length; i++) {
                         teamOne[i]["result"] = "win";
                     }
-                    for(let i = 0; i < teamTwo.length; i++){
+                    for (let i = 0; i < teamTwo.length; i++) {
                         teamTwo[i]["result"] = "lose";
                     }
-                    console.log(teamOne);
-                    console.log(teamTwo);
+
                     const test2 = teamOne.concat(teamTwo)
                     increaseLevel(test2)
-
-                    new Audio("../../sounds/music/Victory.mp3").play();
-                    fightStatus.src = '../../images/sprites/battle/win.png'
-
                 }
             }
 
             checkWinner(teamOne, teamTwo);
 
         }
-        intervalId = setInterval(fight, 50)
+        intervalId = setInterval(fight, 1000)
 
 
 
@@ -290,12 +272,12 @@ fetch("http://localhost:3000/battlesettings")
 
     })
 
-    function play() {
-        var audio1 = document.getElementById("audioFight");
-        var audio2 = document.getElementById("audio");
-        var audio3 = document.getElementById("audioRoad");
-        audio1.play();
-        audio2.play();
-        audio3.play();
-      }
-      play();
+function play() {
+    var audio1 = document.getElementById("audioFight");
+    var audio2 = document.getElementById("audio");
+    var audio3 = document.getElementById("audioRoad");
+    audio1.play();
+    audio2.play();
+    audio3.play();
+}
+play();
