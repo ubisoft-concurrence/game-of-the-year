@@ -101,6 +101,7 @@ formCharacter.addEventListener("submit", function (event) {
     })
     .catch(function(error) {
       // Gérer les erreurs ici
+      new Audio("../../sounds/voices/narrator/Oops.mp3").play();
       alert("Some data is missing...");
   });
 });
@@ -135,6 +136,7 @@ formVehicle.addEventListener("submit", function (event) {
     })
     .catch(function(error) {
       // Gérer les erreurs ici
+      new Audio("../../sounds/voices/narrator/Oops.mp3").play();
       alert("Some data is missing...");
   });
 });
@@ -145,3 +147,10 @@ function play() {
 }
 play();
 
+function playAudio2() {
+  new Audio("../../sounds/effects/Choose.mp3").play();
+}
+
+function playAudio3() {
+  new Audio("../../sounds/effects/Select.wav").play();
+}

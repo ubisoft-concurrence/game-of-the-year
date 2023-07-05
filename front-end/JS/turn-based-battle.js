@@ -140,7 +140,7 @@ fetch("http://localhost:3000/battlesettings")
 
 
 
-                if (allFighters[i].health_point <= 0) {
+                if (allFighters[i].health_point <= 0) {                    
                     allFighters[i].health_point = 0;
                     img[i].style.backgroundPositionX = '50%';
                 }
@@ -223,12 +223,16 @@ fetch("http://localhost:3000/battlesettings")
                     status.innerHTML += "Match nul";
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex'
+                    audio.pause();
+                    new Audio("../../sounds/voices/narrator/Draw.mp3").play();
                 } else if (sumHealthPointsTeamOne <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 2 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
+                    audio.pause();
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
+
                     fightStatus.src = '../../images/sprites/battle/win.png';
                     console.log(teamTwo);
                     for(let i = 0; i < teamTwo.length; i++){
@@ -241,12 +245,18 @@ fetch("http://localhost:3000/battlesettings")
                     console.log(teamTwo);
                     const test = teamOne.concat(teamTwo)
                     increaseLevel(test)
+
+                    new Audio("../../sounds/music/Victory.mp3").play();
+                    fightStatus.src = '../../images/sprites/battle/win.png'
+
                 } else if (sumHealthPointsTeamTwo <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 1 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
+                    audio.pause();
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
+
                     fightStatus.src = '../../images/sprites/battle/win.png';
                     console.log(teamOne);
                     for(let i = 0; i < teamOne.length; i++){
@@ -259,6 +269,10 @@ fetch("http://localhost:3000/battlesettings")
                     console.log(teamTwo);
                     const test2 = teamOne.concat(teamTwo)
                     increaseLevel(test2)
+
+                    new Audio("../../sounds/music/Victory.mp3").play();
+                    fightStatus.src = '../../images/sprites/battle/win.png'
+
                 }
             }
 
