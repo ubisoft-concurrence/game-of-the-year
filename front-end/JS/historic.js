@@ -28,7 +28,7 @@ fetch('http://localhost:3000/historic')
         });
 
     console.log("Listes des batailles:");
-    console.log(battles[1][1].character_name);
+    console.log(battles);
     console.log(Object.keys(battles).length);
     
 
