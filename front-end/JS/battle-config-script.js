@@ -105,6 +105,7 @@ startBtn.addEventListener("click", (event) => {
       
     })
     .catch(function (error) {
+      new Audio("../../sounds/voices/narrator/Oops.mp3").play();
       alert("Some data is missing...");
     });
 });

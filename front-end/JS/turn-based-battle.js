@@ -140,7 +140,7 @@ fetch("http://localhost:3000/battlesettings")
 
 
 
-                if (allFighters[i].health_point <= 0) {
+                if (allFighters[i].health_point <= 0) {                    
                     allFighters[i].health_point = 0;
                     img[i].style.backgroundPositionX = '50%';
                 }
@@ -200,6 +200,7 @@ fetch("http://localhost:3000/battlesettings")
                     status.innerHTML += "Match nul";
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex'
+                    new Audio("../../sounds/voices/narrator/Draw.mp3").play();
                 } else if (sumHealthPointsTeamOne <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 2 gagne<br>`;
                     clearInterval(intervalId)
