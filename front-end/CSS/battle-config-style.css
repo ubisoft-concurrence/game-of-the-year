@@ -39,6 +39,7 @@ html{
     width: 350px;
     height: 50px;
     text-align: center;
+    
   }
 
   .playerlisthead{
@@ -64,6 +65,8 @@ html{
     background-color: #D9D9D9;
     width: 350px;
     height: 500px;
+    padding-top: 5%;
+
 }
 
 .list2{
@@ -71,13 +74,22 @@ html{
     width: 300px;
     height: 550px;
     overflow-y: scroll;
-}
+    padding-top: 5%;
+  }
 
 .center{
     display: flex;
     align-items: center;
     text-align: center;
-    justify-content: center;
+    justify-content: center;    
+}
+
+.centerbut{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;  
+   
 }
 
 .espace{
@@ -87,8 +99,12 @@ html{
 
 .divbackground{
     background-color: #919191;
+    border: solid 5px #4e3f31;
+    border-radius: 10px;
     width: 250px;
     height: 50px;
+    margin: 5%;
+
 }
 
 .textDiv{
@@ -96,6 +112,8 @@ html{
   align-items: center;
   text-align: center;
   justify-content: center;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .player {
@@ -103,3 +121,35 @@ html{
   flex-direction: row;
   justify-content: space-between;
 }
+
+input[type=text], select {
+  width: 40%;
+  padding: 8px;
+  margin: 8px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4e3f31;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #886646;
+}
+
+.btn1{
+  margin-right: 5%;
+  }
+  
+  .btn2{
+  margin-left: 5%;
+  }

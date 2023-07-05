@@ -116,7 +116,7 @@ div{
   align-items: center;
   width: 600px;
   height: 200px;
-  background-color: #978473;
+  background-color: rgba(#978473 , 0.5);
   border: solid 5px;
   border-color: black;
   border-radius: 10px;
