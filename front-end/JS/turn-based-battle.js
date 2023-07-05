@@ -165,7 +165,7 @@ fetch("http://localhost:3000/battlesettings")
         // turn based combat
         let i = 0;
         let intervalId = null;
-        let timeOut = null;
+
         function fight() {
             let randomIndexOne = genererNombreAleatoire(0, teamOne.length - 1);
             let randomIndexTwo = genererNombreAleatoire(0, teamTwo.length - 1);
@@ -191,6 +191,29 @@ fetch("http://localhost:3000/battlesettings")
                     fightStatus.style.display = 'none'
                 }
             }
+            function increaseLevel(character) {
+                // Effectuer une requête POST pour augmenter le niveau du personnage
+                fetch('http://localhost:3000/battlefinish', {
+                  method: 'POST',
+                  body: JSON.stringify(character),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+                .then(response => {
+                  if (response.ok) {
+                    console.log(`Le niveau de ${character} a été augmenté.`);
+                    console.log(response);
+                  } else {
+                    console.log(`Une erreur s'est produite lors de l'augmentation du niveau de ${character.character_name}.`);
+                  }
+                })
+                .catch(error => {
+                  console.log(`Une erreur s'est produite lors de la requête POST : ${error}`);
+                });
+              }
+
+
 
             function checkWinner(teamOne, teamTwo) {
                 const sumHealthPointsTeamOne = teamOne.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
@@ -206,22 +229,43 @@ fetch("http://localhost:3000/battlesettings")
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
-                    fightStatus.src = '../../images/sprites/battle/win.png'
+                    fightStatus.src = '../../images/sprites/battle/win.png';
+                    console.log(teamTwo);
+                    for(let i = 0; i < teamTwo.length; i++){
+                        teamTwo[i]["result"] = "win";
+                    }
+                    for(let i = 0; i < teamOne.length; i++){
+                        teamOne[i]["result"] = "lose";
+                    }
+                    console.log(teamOne);
+                    console.log(teamTwo);
+                    const test = teamOne.concat(teamTwo)
+                    increaseLevel(test)
                 } else if (sumHealthPointsTeamTwo <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 1 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
-                    fightStatus.src = '../../images/sprites/battle/win.png'
+                    fightStatus.src = '../../images/sprites/battle/win.png';
+                    console.log(teamOne);
+                    for(let i = 0; i < teamOne.length; i++){
+                        teamOne[i]["result"] = "win";
+                    }
+                    for(let i = 0; i < teamTwo.length; i++){
+                        teamTwo[i]["result"] = "lose";
+                    }
+                    console.log(teamOne);
+                    console.log(teamTwo);
+                    const test2 = teamOne.concat(teamTwo)
+                    increaseLevel(test2)
                 }
             }
 
-            // Appeler la fonction checkWinner avec vos équipes comme arguments
             checkWinner(teamOne, teamTwo);
 
         }
-        intervalId = setInterval(fight, 500)
+        intervalId = setInterval(fight, 50)
 
 
 
