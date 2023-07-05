@@ -221,12 +221,16 @@ fetch("http://localhost:3000/battlesettings")
                     status.innerHTML += "Match nul";
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex'
+                    audio.pause();
+                    new Audio("../../sounds/voices/narrator/Draw.mp3").play();
                 } else if (sumHealthPointsTeamOne <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 2 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
+                    audio.pause();
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
+                    new Audio("../../sounds/music/Victory.mp3").play();
                     fightStatus.src = '../../images/sprites/battle/win.png';
 
                     for (let i = 0; i < teamTwo.length; i++) {
@@ -243,7 +247,9 @@ fetch("http://localhost:3000/battlesettings")
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
+                    audio.pause();
                     new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
+                    new Audio("../../sounds/music/Victory.mp3").play();
                     fightStatus.src = '../../images/sprites/battle/win.png';
 
                     for (let i = 0; i < teamOne.length; i++) {
