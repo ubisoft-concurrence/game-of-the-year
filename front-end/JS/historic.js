@@ -51,3 +51,9 @@ fetch('http://localhost:3000/historic')
       battleDiv.appendChild(losersDiv);
     }
 });
+
+function play() {
+  var audio = document.getElementById("audio");
+  audio.play();
+}
+play();
