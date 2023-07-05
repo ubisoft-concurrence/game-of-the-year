@@ -212,15 +212,25 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* display: none; */
     flex-direction: column;
+    align-items: center;
     
+}
+.btnFinish{
+    display: none;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+
+}
+#fightStatus{
+    max-width: 100%;
 }
 .restartBtn, .changeCrew, .review {
     font-family: 'Press Start 2P', cursive;
     border: none;
     font-size: 20px;
-    padding: 20px 30px;
+    padding: 20px 25px;
     background-color: lightgrey;
     cursor: pointer;
     margin: 10px 0;
