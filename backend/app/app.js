@@ -60,11 +60,10 @@ app.get("/battlesettings", async (req, res) => {
 });
 //Retrieve end of battle information
 app.post("/battlefinish", async (req, res) => {
-  const { fighters, winners } = req.body;
+  const fighters = req.body;
   await newBattle();
   await saveResult(fighters);
-  await levelUp(winners);
-  await cleanChoice();
+  await levelUp(fighters);
   res.status(201).send("Results saved !")
 });
 
