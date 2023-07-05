@@ -171,7 +171,7 @@ export async function saveResult(fighters) {
         ORDER BY battle_id DESC
         LIMIT 1
         `)
-    console.log(lastBattleId[0][0].battle_id);
+        
     for (let character of fighters) {
         let characterId = await getCharacterId(character.character_name);
         await pool.query(`
@@ -229,23 +229,3 @@ export async function getHistoric() {
     `);
     return historic[0];
 }
-
-
-let fighters = [
-    {
-        character_name: "Kanak",
-        result: "win"
-    },
-    {
-        character_name: "Junkbezoul",
-        result: "lose"
-    },
-    {
-        character_name:"Zescrum",
-        result:"win"
-    }
-]
-
-await newBattle();
-await saveResult(fighters);
-await levelUp(fighters);
