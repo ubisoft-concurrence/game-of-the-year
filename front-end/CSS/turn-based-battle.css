@@ -24,7 +24,7 @@ body {
 }
 
 .img {
-    animation: slide 5s linear infinite;
+    /* animation: slide 5s linear infinite; */
     width: 100%;
 }
 
