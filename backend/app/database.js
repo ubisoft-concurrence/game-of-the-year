@@ -42,19 +42,21 @@ export async function getVehicles() {
     return vehicles[0];
 }
 //Character(s) and vehicle(s) choice
-export async function choice(characters) {
-    for (let character of characters) {
-        let vehicleIdQueryResult = await pool.query(`
+export async function choice(gang) {
+    let vehicleId = await pool.query(`
             SELECT vehicle_id FROM vehicles WHERE vehicle_name = ?
-            `, character.vehicle_name);
-
-        let vehicleId = vehicleIdQueryResult[0].map(result => result.vehicle_id);
-
+            `, gang[0]);
+    
+    vehicleId = vehicleId[0].map(result => result.vehicle_id);
+    for (let i = 1; i < gang.length; i++) {
         await pool.query(`
             UPDATE characters SET vehicle_id = ? WHERE character_name = ?
-            `, [vehicleId, character.character_name]);
+            `, [vehicleId, gang[i]]);
     }
 }
+// await cleanChoice();
+// await choice(['PorteGuerre', 'ZePO'])
+// await choice(['MagicBus', 'Commit', 'Zescrum', 'fetch', 'Merge'])
 
 //*--------FOR PAGE 3 (battle)--------*\\
 //Configure fighters stats function
@@ -63,7 +65,7 @@ function configure(fighters) {
         if (character.buff == "health") {
             character.health_point += character.health_point * 0.2;
         } else if (character.buff == "attack") {
-            character.attack += character.attack_point * 0.2;
+            character.attack += character.attack * 0.2;
         }
 
         character.health_point += character.health_point * 0.1 * character.character_level;
@@ -78,11 +80,9 @@ export async function battleSettings() {
         JOIN vehicles ON characters.vehicle_id = vehicles.vehicle_id
         WHERE characters.vehicle_id IS NOT NULL
         `);
-    
     let vehicleId = vehicle[0].map(
                         result => result.vehicle_id
                         );
-
     let gang1 = await pool.query(`
         SELECT
             characters.character_name,
@@ -91,6 +91,7 @@ export async function battleSettings() {
             classes.health_point,
             classes.attack,
             characters.vehicle_id,
+            vehicles.color,
             vehicles.buff,
             vehicles.nerf
         FROM 
@@ -106,7 +107,6 @@ export async function battleSettings() {
         WHERE
             characters.vehicle_id = ?
         `, vehicleId[0]);
-
     let gang2 = await pool.query(`
         SELECT
             characters.character_name,
@@ -115,6 +115,7 @@ export async function battleSettings() {
             classes.attack,
             characters.character_level,
             characters.vehicle_id,
+            vehicles.color,
             vehicles.buff,
             vehicles.nerf
         FROM 
@@ -130,7 +131,6 @@ export async function battleSettings() {
         WHERE
             characters.vehicle_id = ?
         `, vehicleId[1]);
-    
     configure(gang1[0]);
     configure(gang2[0]);
     gang1[0] = gang1[0].map(({ character_name, skin, health_point, attack }) => ({
@@ -145,14 +145,23 @@ export async function battleSettings() {
         health_point,
         attack
       }));
-    return[vehicle[0], gang1[0], gang2[0]];
+    return [vehicle[0], gang1[0], gang2[0]];
 }
+// battleSettings()
 //Save a battle
 export async function newBattle() {
+    const lastBattleId = await pool.query(`
+        SELECT battle_id
+        FROM battles
+        ORDER BY battle_id DESC
+        LIMIT 1
+        `);
+
     await pool.query(`
-        INSERT INTO battles (date)
-        VALUES (CURDATE())
-        `)
+        INSERT INTO battles (battle_id, date)
+        VALUES (?, CURDATE())
+        `, lastBattleId[0][0].battle_id + 1
+        );
 }
 //Get character id by name (for saveResult())
 export async function getCharacterId(name) {
@@ -170,23 +179,30 @@ export async function saveResult(fighters) {
         ORDER BY battle_id DESC
         LIMIT 1
         `)
-
+        
     for (let character of fighters) {
-        console.log(character.character_name)
+        let characterId = await getCharacterId(character.character_name);
         await pool.query(`
         INSERT INTO battles_characters (battle_id, character_id, result)
         VALUES  (?, ?, ? )
-        `, [lastBattleId, getCharacterId(character.character_name), character.result])
+        `, [lastBattleId[0][0].battle_id, characterId, character.result])
     }
 }
 //Update character level of the winners 
-export async function levelUp(winners) {
+export async function levelUp(fighters) {
+    let winners = [];
+    for (let fighter of fighters) {
+        if (fighter.result == "win") {
+            winners.push(fighter)
+        }
+    }
+    console.log(winners)
     for (let character of winners) {
         await pool.query(`
             UPDATE characters 
-            SET character_level = ? 
+            SET character_level = character_level + 1
             WHERE character_name = ?
-            `, [character.character_level, character.character_name]
+            `, [character.character_name]
         );
     }
 }
@@ -211,7 +227,7 @@ export async function getRanking() {
 
 //Retrieve battle history
 export async function getHistoric() {
-    const hisotric = await pool.query(`
+    const historic = await pool.query(`
         SELECT battles.battle_id, character_name, result 
         FROM characters 
         JOIN battles_characters 

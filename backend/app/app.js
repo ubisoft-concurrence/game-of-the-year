@@ -39,9 +39,9 @@ app.get('/chooseyourgang', (req, res) => {
 app.get('/battle', (req, res) => {
     res.sendFile('turn-based-battle.html', { root: '/app/front-end/HTML' });  
 });
-// app.get('/historic', (req, res) => {
-//     res.sendFile('index.html', { root: '/app/front-end/HTML' });  
-// });
+app.get('/historictable', (req, res) => {
+    res.sendFile('historic.html', { root: '/app/front-end/HTML' });  
+});
 
 
 //*--------FOR PAGE 1 (create characters)--------*\\
@@ -71,8 +71,10 @@ app.get("/vehicles", async (req, res) => {
 });
 //Character(s) and vehicle(s) choice
 app.post("/choice", async (req, res) => {
-  const characters = req.body;
-  await choice(characters);
+  const dataChoice = req.body;
+  await cleanChoice();
+  await choice(dataChoice.liste1);
+  await choice(dataChoice.liste2);
   res.status(200).send("Choice is updated !");
 });
 
@@ -84,11 +86,10 @@ app.get("/battlesettings", async (req, res) => {
 });
 //Retrieve end of battle information
 app.post("/battlefinish", async (req, res) => {
-  const { fighters, winners } = req.body;
+  const fighters = req.body;
   await newBattle();
   await saveResult(fighters);
-  await levelUp(winners);
-  await cleanChoice();
+  await levelUp(fighters);
   res.status(201).send("Results saved !")
 });
 

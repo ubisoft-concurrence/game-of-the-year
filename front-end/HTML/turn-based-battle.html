@@ -9,16 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Battle</title>
-    <link rel="icon" type="image/png" href="../images/pageicon.png">
+    <link rel="icon" type="image/png" href="../../images/pageicon.png">
 </head>
 
 <body>
+
+    <audio id="audioFight" src="../../sounds/voices/narrator/Fight.mp3"></audio>
+    <audio id="audio" src="../../sounds/music/Battle.mp3" loop></audio>
+    <audio id="audioRoad" src="../../sounds/effects/BusRide.mp3" loop></audio>
+
     <div class="picture">
         <div class="img">
-            <img class="fond" src="../images/backgrounds/download.png" alt="">
+            <img class="fond" src="../../images/backgrounds/download.png" alt="">
         </div>
         <div class="img">
-            <img class="fond2" src="../images/backgrounds/download.png" alt="">
+            <img class="fond2" src="../../images/backgrounds/download.png" alt="">
         </div>
     </div>
     <div class="busContainer">
@@ -41,8 +46,15 @@
         <p class="infosRound"></p>
     </div>
 
-    <div class="restartBtn">
-        
+    <div class="restartDiv">
+        <img src="../../images/sprites/battle/fight.png" alt="" id="fightStatus">
+        <div class="btnFinish">
+            <button class="restartBtn">RESTART</button>
+            <a class="changeCrew" href="./chooseyourgang">CHANGE CREW</a>
+
+            <a class="review" href="./historic">REVIEW</a>
+
+        </div>
     </div>
 
     <script src="../JS/turn-based-battle.js"></script>

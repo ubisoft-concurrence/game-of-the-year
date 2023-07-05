@@ -8,7 +8,10 @@
     <link rel="icon" type="image/png" href="../../images/pageicon.png">
 </head>
 <body>
-    
+
+<audio id="audioBegin" src="../../sounds/voices/narrator/GetReadyForTheNextBattle.mp3"></audio>
+<audio id="audio" src="../../sounds/music/Crew Select.mp3" loop></audio>
+
 <h1 Align="center">Get Ready to Fight</h1>
 
 <div class="center" >
@@ -17,12 +20,10 @@
             <h2>Gang1</h2>
         </div>
         <div class="buschoice1">
-            <select name="Bus1" id="buschoicesave" required>
-                <option value="" hidden selected>Choose a vehicle</option>
+            <select name="Bus1" id="buschoicesave" classe="dropdown" onchange="listOptions(this.value, event)" required>
             </select>
         </div>
         <section class="list" ondrop="drop(event)" ondragover="allowDrop(event)" id="Gang1">
-
         </section>
     </div>
 
@@ -40,19 +41,18 @@
             <h2>Gang2</h2>
         </div>
         <div class="buschoice2">
-            <select name="Bus2" id="buschoicesave2" required>
-                <option value="" hidden selected>Choose a vehicle</option>
+            <select name="Bus2" id="buschoicesave2" classe="dropdown" onchange="listOptions(this.value, event)" required>
             </select>
         </div>
         <section class="list"ondrop="drop(event)" ondragover="allowDrop(event)" id="Gang2">
-
         </section>
     </div>
 </div>
 
-<div class="center">
-    <button onclick="window.location.href='./creation';">Character Creator</button>
-    <button onclick="window.location.href='./battle';">Start the Battle</button>
+<div class="centerbut">
+    <button class="btn2" onclick="window.location.href='./creation';">Character Creator</button>
+    <button class="btn2" onclick="window.location.href='./historictable';">Historic</button>
+    <button class="btn2" id="btn-start">Start the Battle</button>
 </div>
 
 </body>

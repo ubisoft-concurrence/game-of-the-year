@@ -1,46 +1,52 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     overflow: hidden;
 }
 
 @keyframes moove {
-    0%{
+    0% {
         transform: translateY(0px);
     }
-    100%{
+
+    100% {
         transform: translateY(-5px);
     }
 }
-.picture{
+
+.picture {
     width: 200vw;
     height: 100vh;
     display: flex;
 }
-.img{
+
+.img {
     animation: slide 5s linear infinite;
     width: 100%;
 }
 
-.fond{
+.fond {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
-.fond2{
+
+.fond2 {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
+
 /* .img2{
     background-image: url(wsh.png);
     width: 100%;
     height: 20%;
     background-size: cover;
 } */
-.get-sol{
+.get-sol {
     min-width: 200vw;
     height: 100vh;
     display: flex;
@@ -49,100 +55,115 @@ body{
 }
 
 @keyframes slide {
-    0%{
+    0% {
         transform: translateX(-100%);
     }
-    100%{
+
+    100% {
         transform: translateX(0);
     }
 }
 
-.grid{
+.grid {
     width: 124px;
     height: 124px;
-    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* position: relative; */
-    /* position: absolute; */
-    /* top: 53%;
-    padding: 5px; */
     animation: moove .2s linear infinite alternate;
 }
-.placeFight{
+
+.placeFight {
     width: 100vw;
     height: 50%;
     position: relative;
 }
-#getFighters{
+
+#getFighters {
     display: inline-flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-evenly;
     position: absolute;
     top: -50px;
 }
-.grid1{
+
+.teamOne,
+.teamTwo {
+    display: flex;
+}
+
+.grid1 {
     left: 14%;
 }
-.grid2{
+
+.grid2 {
     left: 20%;
 }
-.grid3{
+
+.grid3 {
     left: 8%;
 }
-.grid4{
+
+.grid4 {
     left: 26%;
 }
-.grid5{
+
+.grid5 {
     right: 35%;
     margin-right: 30px;
 }
-.grid6{
+
+.grid6 {
     right: 25%;
 }
-.grid7{
+
+.grid7 {
     right: 15%;
 }
-.grid8{
+
+.grid8 {
     right: 5%;
 }
-.grid9 .imgCharacter,
-.grid6 .imgCharacter,
-.grid7 .imgCharacter,
-.grid10 .imgCharacter,
-.grid8 .imgCharacter {
+
+.teamTwo .grid .imgCharacter {
     transform: scaleX(-1);
 }
 
-.lifebar{
+.lifebar {
     width: 100px;
     height: 15px;
     margin: 0 auto;
     background-color: rgb(128, 0, 0);
     position: relative;
 }
-.lifebar p{
+
+.lifebar p {
     font-size: 13px;
     color: white;
     z-index: 10000;
 }
-.greenbar{
+
+.greenbar {
     overflow-x: hidden;
     display: flex;
     justify-content: flex-start;
-    /* width: 100%; */
     height: 100%;
     background-color: green;
 }
+<<<<<<< HEAD
 .grid .imgCharacter{
     background-image: url(../images/sprites/battle/Wall2.png);
+=======
+
+.grid .imgCharacter {
+    background-image: url(../../images/sprites/battle/Wall2.png);
+>>>>>>> 411a74da0f10a6fa4eaf9d120815bfcc44dfdf08
     background-size: cover;
-    width: 90px;
+    width: 85px;
     height: 144px;
 }
 
-.busContainer{
+.busContainer {
     display: flex;
     position: absolute;
     bottom: 0;
@@ -152,16 +173,18 @@ body{
     width: 100%;
     height: 380px;
 }
-.myBus{
+
+.myBus {
     display: flex;
 }
-.imgBus img{
+
+.imgBus img {
     position: relative;
     width: 680px;
     animation: moove .2s linear infinite alternate;
 }
 
-.infoFight{
+.infoFight {
     width: 80%;
     height: 100px;
     overflow-y: scroll;
@@ -172,17 +195,51 @@ body{
     display: flex;
     font-family: 'Press Start 2P', cursive;
 }
-.idRound{
+
+.idRound {
     border-right: 1px solid black;
     margin: 0 5px;
     font-size: 25px;
 }
-.infosRound{
+
+.infosRound {
     font-size: 25px;
 }
-.nameFighter{
+
+.nameFighter {
     margin: 5px auto;
     font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     text-transform: capitalize;
+}
+.restartDiv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    
+}
+.btnFinish{
+    display: none;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+
+}
+#fightStatus{
+    max-width: 100%;
+}
+.restartBtn, .changeCrew, .review {
+    font-family: 'Press Start 2P', cursive;
+    border: none;
+    font-size: 20px;
+    padding: 20px 25px;
+    background-color: lightgrey;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
 }

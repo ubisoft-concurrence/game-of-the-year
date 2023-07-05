@@ -1,6 +1,16 @@
-html{
-  background-color: #D28954;
+
+html { 
+  background: url(../../images/backgrounds/characrea.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+
+.zonerempli{
+  background: linear-gradient(#D28954, #d27654);
+}
+
 
 @font-face {
     font-family: PressStart2P;
@@ -68,8 +78,8 @@ h2 {
 }
 
 .espace{
-  margin-right: 200px;
-  margin-left: 200px;
+  margin-right: 150px;
+  margin-left: 150px;
 }
 
 #checkbox-div{
@@ -79,7 +89,7 @@ h2 {
 
 .selected {
   transform: scale(0.9);
-  border: 1px green solid;
+  border: 1px #ef0909 solid;
   box-shadow: 0 0 5px #333;
   z-index: -1;
 }
@@ -133,4 +143,50 @@ label img {
   width: 100px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
+}
+
+.margin{
+  margin-right: 200px;
+  margin-left: 200px;
+  border: solid 15px #333;
+  border-radius: 10px;
+}
+
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #4e3f31;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #886646;
+}
+
+button {
+  background-color: #4e3f31;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #886646;
 }

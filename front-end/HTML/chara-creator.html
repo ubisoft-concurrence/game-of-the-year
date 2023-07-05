@@ -8,9 +8,13 @@
     <link rel="icon" type="image/png" href="../../images/pageicon.png">
 </head>
 <body>
+
+    <audio id="audio" src="../../sounds/music/Character Creator.mp3" loop></audio>
+
+
     <h1 Align="center">Set Things Up</h1>
 
-<div class="center">
+<div class="center zonerempli margin">
     <div class="espace">
         <form method="post" id="CharaCreator">
             <h2>Create your character:</h2>
@@ -20,11 +24,11 @@
 
             <h3>Jobs</h3>
             <select id="class-select" name="class_name" required>
-                <option value="slasher">Slasher</option>
-                <option value="wall">Wall</option>
-                <option value="killer">Killer</option>
-                <option value="monster">Monster</option>
-                <option value="gunner">Gunner</option>
+                <option value="slasher" onclick="playAudio2()">Slasher</option>
+                <option value="wall" onclick="playAudio2()">Wall</option>
+                <option value="killer" onclick="playAudio2()">Killer</option>
+                <option value="monster" onclick="playAudio2()">Monster</option>
+                <option value="gunner" onclick="playAudio2()">Gunner</option>
             </select>
             
             <h3>Choose a skin</h3>
@@ -44,7 +48,7 @@
             <div class="stats-info">
                 <p id="stats-jobs"></p>
             </div><br>
-            <input type="submit" placeholder="Create !">
+            <input type="submit" placeholder="Create !" value="Create" onclick="playAudio()">
         </form>
     </div>
 
@@ -57,32 +61,32 @@
 
             <h3>Buff</h3>
             <select id="buff-select" name="buff" required>
-                <option value="health">Health</option>
-                <option value="attack">Attack</option>
-                <option value="speed">Speed</option>
+                <option value="health" onclick="playAudio3()">Health</option>
+                <option value="attack" onclick="playAudio3()">Attack</option>
+                <option value="speed" onclick="playAudio3()">Speed</option>
             </select>
 
             <h3>Debuff</h3>
             <select id="debuff-select" name="nerf" required>
-                <option value="health">Health</option>
-                <option value="attack">Attack</option>
-                <option value="speed">Speed</option>
+                <option value="health" onclick="playAudio3()">Health</option>
+                <option value="attack" onclick="playAudio3()">Attack</option>
+                <option value="speed" onclick="playAudio3()">Speed</option>
             </select>
 
             <h3>Colors</h3>
             <select id="color-select" name="color" required>
-                <option value="yellow">Yellow</option>
-                <option value="brown">Brown</option>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="pink">Pink</option>
-                <option value="green">Green</option>
+                <option value="yellow" onclick="playAudio2()">Yellow</option>
+                <option value="brown" onclick="playAudio2()">Brown</option>
+                <option value="red" onclick="playAudio2()">Red</option>
+                <option value="blue" onclick="playAudio2()">Blue</option>
+                <option value="pink" onclick="playAudio2()">Pink</option>
+                <option value="green" onclick="playAudio2()">Green</option>
             </select>
             <div class="bus-list">
                 <img id="img-select" src="../../images/sprites/bus/yellow.png" alt="bus1">
-            </div><br><br><br>
+            </div><br>
 
-            <input type="submit" placeholder="Create !">
+            <input type="submit" placeholder="Create !" value="Create" onclick="playAudio()">
         </form>
     </div>
 </div>
