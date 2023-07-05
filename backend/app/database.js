@@ -219,7 +219,7 @@ export async function getRanking() {
 
 //Retrieve battle history
 export async function getHistoric() {
-    const hisotric = await pool.query(`
+    const historic = await pool.query(`
         SELECT battles.battle_id, character_name, result 
         FROM characters 
         JOIN battles_characters 
