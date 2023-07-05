@@ -53,6 +53,7 @@ function drag(ev) {
 function drop(even) {
   even.preventDefault();
   var fetchData = even.dataTransfer.getData("text");
+  new Audio("../../sounds/effects/Placement.mp3").play();
   even.currentTarget.appendChild(document.getElementById(fetchData));
 }
 
@@ -115,3 +116,4 @@ function play() {
   audio2.play();
 }
 play();
+
