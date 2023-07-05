@@ -11,13 +11,13 @@ fetch("http://localhost:3000/battlesettings")
 
         let divTeamOne;
         let divTeamTwo;
-        
+
         if (data[0][0] && data[1]) {
             busTeamOne.src = `../../images/sprites/bus/${data[0][0].color}.png`
             teamOne = data[1]
             divTeamOne = document.createElement('div')
             divTeamOne.classList.add('teamOne')
-            
+
         }
         if (data[0][1] && data[2]) {
             busTeamTwo.src = `../../images/sprites/bus/${data[0][1].color}.png`
@@ -25,7 +25,7 @@ fetch("http://localhost:3000/battlesettings")
             divTeamTwo = document.createElement('div')
             divTeamTwo.classList.add('teamTwo')
         }
-    
+
         const allFighters = teamOne.concat(teamTwo);
         const idRound = document.querySelector('.idRound')
 
@@ -127,7 +127,7 @@ fetch("http://localhost:3000/battlesettings")
             const damage = attaquant[random1].attack;
             let randomAll = genererNombreAleatoire(0, allFighters.length - 1)
             defenseur[random2].health_point -= damage;
-            status.innerHTML += `${attaquant[random1].character_name} attaque ${defenseur[random2].character_name} et lui inflige ${damage} damage <br>`;
+            status.innerHTML += `<br>${attaquant[random1].character_name} attaque ${defenseur[random2].character_name} et lui inflige ${damage} damage <br>`;
 
             for (let i = 0; i < pointVie.length && i < allFighters.length && i < img.length && i < greenBar.length; i++) {
 
@@ -153,10 +153,16 @@ fetch("http://localhost:3000/battlesettings")
             }
         }
 
-        const restartDiv = document.querySelector('.restartBtn')
+        const restartDiv = document.querySelector('.restartDiv');
+        const restartBtn = document.querySelector('.restartBtn');
+        const fightStatus = document.querySelector('#fightStatus')
+        restartBtn.addEventListener('click', () => {
+            location.reload()
+        })
         // turn based combat
         let i = 0;
         let intervalId = null;
+        let timeOut = null;
         function fight() {
             let randomIndexOne = genererNombreAleatoire(0, teamOne.length - 1);
             let randomIndexTwo = genererNombreAleatoire(0, teamTwo.length - 1);
@@ -166,7 +172,7 @@ fetch("http://localhost:3000/battlesettings")
                 infosFight.scrollTo(0, infosFight.scrollHeight)
                 number++;
                 i++;
-                idRound.innerHTML += `Round ${i} <br>`;
+                idRound.innerHTML += `<br>Round ${i} <br>`;
 
                 if (number % 2) {
                     attack(teamOne, teamTwo, randomIndexOne, randomIndexTwo)
@@ -174,29 +180,40 @@ fetch("http://localhost:3000/battlesettings")
                 else {
                     attack(teamTwo, teamOne, randomIndexTwo, randomIndexOne)
                 }
+
+
+                if (i === 1) {
+                    fightStatus.src = '../../images/sprites/battle/fight.png'
+                    console.log('oui');
+                }
             }
 
             function checkWinner(teamOne, teamTwo) {
                 const sumHealthPointsTeamOne = teamOne.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
                 const sumHealthPointsTeamTwo = teamTwo.reduce((sum, character) => sum + Math.floor(character.health_point), 0);
-              
-                if (sumHealthPointsTeamOne <= 0 && sumHealthPointsTeamTwo <= 0) {
-                  status.innerHTML += "Match nul";
-                  clearInterval(intervalId)
-                } else if (sumHealthPointsTeamOne <= 0) {
-                  status.innerHTML += "Équipe 2 gagne";
-                  clearInterval(intervalId)
-                } else if (sumHealthPointsTeamTwo <= 0) {
-                  status.innerHTML += "Équipe 1 gagne";
-                  clearInterval(intervalId)
-                }
-              }
-              
-              // Appeler la fonction checkWinner avec vos équipes comme arguments
-              checkWinner(teamOne, teamTwo);
 
-}
-        intervalId = setInterval(fight, 50)
+                if (sumHealthPointsTeamOne <= 0 && sumHealthPointsTeamTwo <= 0) {
+                    status.innerHTML += "Match nul";
+                    clearInterval(intervalId)
+                    restartDiv.style.display = 'flex'
+                } else if (sumHealthPointsTeamOne <= 0) {
+                    status.innerHTML += `<br> Round ${i + 1} Équipe 2 gagne<br>`;
+                    clearInterval(intervalId)
+                    restartDiv.style.display = 'flex';
+                    fightStatus.src = '../../images/sprites/battle/win.png'
+                } else if (sumHealthPointsTeamTwo <= 0) {
+                    status.innerHTML += `<br> Round ${i + 1} Équipe 1 gagne<br>`;
+                    clearInterval(intervalId)
+                    restartDiv.style.display = 'flex';
+                    fightStatus.src = '../../images/sprites/battle/win.png'
+                }
+            }
+
+            // Appeler la fonction checkWinner avec vos équipes comme arguments
+            checkWinner(teamOne, teamTwo);
+
+        }
+        intervalId = setInterval(fight, 500)
 
 
 
