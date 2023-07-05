@@ -18,6 +18,7 @@ classSelect.addEventListener('change', () => {
 
 radio1.addEventListener('change', () => {
   if (radio1.checked) {
+    new Audio("../../sounds/effects/Select.wav").play();
     skin1.classList.add('selected');
     skin2.classList.remove('selected');
   }
@@ -25,6 +26,7 @@ radio1.addEventListener('change', () => {
 
 radio2.addEventListener('change', () => {
   if (radio2.checked) {
+    new Audio("../../sounds/effects/Select.wav").play();
     skin2.classList.add('selected');
     skin1.classList.remove('selected');
   }
@@ -93,6 +95,7 @@ formCharacter.addEventListener("submit", function (event) {
     })
     .then(function(response) {
       if (response.ok) {
+        new Audio("../../sounds/voices/narrator/NewChallenger.mp3").play();
         alert("Character created!");
       }
     })
@@ -126,6 +129,7 @@ formVehicle.addEventListener("submit", function (event) {
     })
     .then(function(response) {
       if (response.ok) {
+        new Audio("../../sounds/voices/narrator/Great.mp3").play();
         alert("Vehicle created!");
       }
     })
@@ -134,3 +138,10 @@ formVehicle.addEventListener("submit", function (event) {
       alert("Some data is missing...");
   });
 });
+
+function play() {
+  var audio = document.getElementById("audio");
+  audio.play();
+}
+play();
+

@@ -53,6 +53,7 @@ function drag(ev) {
 function drop(even) {
   even.preventDefault();
   var fetchData = even.dataTransfer.getData("text");
+  new Audio("../../sounds/effects/Placement.mp3").play();
   even.currentTarget.appendChild(document.getElementById(fetchData));
 }
 
@@ -107,3 +108,12 @@ startBtn.addEventListener("click", (event) => {
       alert("Some data is missing...");
     });
 });
+
+function play() {
+  var audio1 = document.getElementById("audioBegin");
+  var audio2 = document.getElementById("audio");
+  audio1.play();
+  audio2.play();
+}
+play();
+

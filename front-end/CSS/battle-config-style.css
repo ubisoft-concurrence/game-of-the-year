@@ -1,5 +1,10 @@
 html{
     background-color: #D28954;
+    background: url(../../images/backgrounds/storm.gif) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 @font-face {
