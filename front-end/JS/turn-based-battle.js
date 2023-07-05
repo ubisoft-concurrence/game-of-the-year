@@ -178,9 +178,11 @@ fetch("http://localhost:3000/battlesettings")
                 idRound.innerHTML += `<br>Round ${i} <br>`;
 
                 if (number % 2) {
+                    new Audio("../../sounds/effects/Hit.mp3").play();
                     attack(teamOne, teamTwo, randomIndexOne, randomIndexTwo)
                 }
                 else {
+                    new Audio("../../sounds/effects/Hit.mp3").play();
                     attack(teamTwo, teamOne, randomIndexTwo, randomIndexOne)
                 }
 
@@ -203,12 +205,14 @@ fetch("http://localhost:3000/battlesettings")
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
+                    new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
                     fightStatus.src = '../../images/sprites/battle/win.png'
                 } else if (sumHealthPointsTeamTwo <= 0) {
                     status.innerHTML += `<br> Round ${i + 1} Équipe 1 gagne<br>`;
                     clearInterval(intervalId)
                     btnFinish.style.display = 'flex';
                     fightStatus.style.display = 'block'
+                    new Audio("../../sounds/voices/narrator/YouWin.mp3").play();
                     fightStatus.src = '../../images/sprites/battle/win.png'
                 }
             }
@@ -227,3 +231,13 @@ fetch("http://localhost:3000/battlesettings")
         }
 
     })
+
+    function play() {
+        var audio1 = document.getElementById("audioFight");
+        var audio2 = document.getElementById("audio");
+        var audio3 = document.getElementById("audioRoad");
+        audio1.play();
+        audio2.play();
+        audio3.play();
+      }
+      play();
