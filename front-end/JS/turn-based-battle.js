@@ -56,7 +56,7 @@ fetch("http://localhost:3000/battlesettings")
 
             const divSkin = document.createElement('div');
             divSkin.classList.add('imgCharacter')
-            divSkin.style.backgroundImage = `url('/images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
+            divSkin.style.backgroundImage = `url('../../images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
 
             nameFighter.innerHTML = elements.character_name
 
@@ -91,7 +91,7 @@ fetch("http://localhost:3000/battlesettings")
 
             const divSkin = document.createElement('div');
             divSkin.classList.add('imgCharacter')
-            divSkin.style.backgroundImage = `url('/images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
+            divSkin.style.backgroundImage = `url('../../images/sprites/battle/${skinFirstLetter + skin.slice(1)}.png`;
 
             nameFighter.innerHTML = elements.character_name
 
