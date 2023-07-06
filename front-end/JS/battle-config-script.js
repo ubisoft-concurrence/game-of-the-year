@@ -16,32 +16,33 @@ const output3 = document.getElementById('buschoicesave2');
 fetch('http://localhost:3000/vehicles')
   .then(response => response.json())
   .then(vehicles => {
-    let x = 0
-    vehicles.forEach(element => {
-      x++;
-      output2.innerHTML += `<option value="bus${x}" onclick="playAudio2()">` + element.vehicle_name + `</div>`;
-      output3.innerHTML += `<option value="bus${x}" onclick="playAudio2()">` + element.vehicle_name + `</div>`;
-    });
+    
+    for (let i = 0; i < vehicles.length; i++) {
+      let x = i;
+      let y = vehicles.length - 1 - i;
+      output2.innerHTML += `<option value="bus${x}" onclick="playAudio2()">` + vehicles[y].vehicle_name + `</option>`;
+      output3.innerHTML += `<option value="bus${y}" onclick="playAudio2()">` + vehicles[x].vehicle_name + `</option>`;
+    }
   })
 
 //FUNCTION FOR VEHICLE LIST SELECTION PERMISION
-// function listOptions(selectedValue,event) {
-//   const lists = document.querySelectorAll('.dropdown');
-//   for (let i = 0; i < lists.length; i++) {
-//     const list = lists[i];
+function listOptions(selectedValue,event) {
+  const lists = document.querySelectorAll('.dropdown');
+  for (let i = 0; i < lists.length; i++) {
+    const list = lists[i];
 
-//     for (let j = 0; j < list.length; j++) {
-//       const option = list.options[j];
+    for (let j = 0; j < list.length; j++) {
+      const option = list.options[j];
 
-//       if (option.value === selectedValue && list.id !== event.target.id) {
-//         option.disabled = true;
-//         option.selected = false;
-//       } else {
-//         option.disabled = false;
-//       }
-//     }
-//   }
-// }
+      if (option.value === selectedValue && list.id !== event.target.id) {
+        option.disabled = true;
+        option.selected = false;
+      } else {
+        option.disabled = false;
+      }
+    }
+  }
+}
 
 //DRAG AND DROP
 function allowDrop(ev) {
